@@ -1,0 +1,721 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #C084FC 100%);
+    --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    --highlight-gradient: linear-gradient(120deg, #fbbf24, #f59e0b);
+    --location-gradient: linear-gradient(120deg, #10b981, #059669);
+    --primary-color: #8B5CF6;
+    --primary-dark: #4c1d95;
+    --text-color: #1e293b;
+    --text-light: #e2e8f0;
+    --border-color: rgba(139, 92, 246, 0.1);
+    --hover-bg: rgba(139, 92, 246, 0.05);
+    --shadow-light: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 20px 40px rgba(139, 92, 246, 0.15);
+    --animation-play-state: running; /* Default animation state for JS control */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Prioritize Noto Sans KR */
+    background-color: #f4f4f4; /* Changed to solid color as per original index.html */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    padding-bottom: 50px; /* 하단 배너 높이만큼 패딩 추가 */
+}
+
+/* Header styles */
+header {
+    background-color: #004d40;
+    color: #fff;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Navigation menu styles (desktop) */
+.nav-menu ul {
+    list-style: none;
+    display: flex; /* Horizontal alignment for desktop */
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.nav-menu ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hamburger menu button (hidden on desktop) */
+.hamburger-menu {
+    display: none;
+    background: rgba(255, 255, 255, 0.1); /* Subtle background */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1005; /* Above navigation menu */
+    margin-left: auto; /* Push to the right */
+    border-radius: 4px; /* Rounded corners for the button */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+.hamburger-menu:hover {
+    background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on hover */
+}
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger menu active state (changes to X shape) */
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Container for main content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: none; /* Removed background from this container as it's now used for form section */
+    box-shadow: none; /* Removed shadow from this container */
+    border-radius: 0; /* Removed border-radius from this container */
+    -webkit-backdrop-filter: none; /* Removed backdrop-filter */
+    backdrop-filter: none; /* Removed backdrop-filter */
+    animation: none; /* Removed animation from this container */
+}
+/* Intro section styles */
+.intro {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+.intro h2 {
+    color: #004d40;
+    margin-bottom: 15px;
+}
+.intro p {
+    font-size: 1.1em;
+    color: #555;
+}
+/* Form section styles */
+.form-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Padding included in width */
+}
+.form-section h3 {
+    margin-bottom: 20px;
+    color: #004d40;
+    text-align: center;
+}
+
+.form-section label:not([for="agreeCheckbox"]) {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Style for required text */
+.required-text {
+    color: #e74c3c; /* Red color */
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+.form-section textarea {
+    margin-bottom: 15px;
+}
+
+.form-section label[for="agreeCheckbox"] {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+    cursor: pointer;
+}
+.form-section label[for="agreeCheckbox"] input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    margin-bottom: 0;
+}
+
+.form-section button {
+    padding: 12px 25px;
+    background-color: #004d40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+.form-section button:hover:not(.btn-disabled) {
+    background-color: #00332d;
+}
+.form-section button.btn-disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.form-section button.btn-disabled:hover {
+    background-color: #bbb;
+}
+
+.privacy-text {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+/* Intro image section with canvas background */
+.intro-image-section {
+    position: relative;
+    width: 100vw; /* Force to viewport width */
+    height: calc(100vh - 60px); /* Adjust height based on header height */
+    min-height: 400px;
+    overflow: hidden;
+}
+
+/* Styles for the main background image within intro-image-section */
+.background-image-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: blur(5px) brightness(0.9); /* Apply blur/brightness to the main image */
+    z-index: 0; /* Ensures it's the background for the section */
+}
+
+/* Sparkle and Shooting Star canvas styles */
+#sparkle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Fit parent width */
+    height: 100%; /* Fit parent height */
+    pointer-events: none; /* Allows clicks to pass through to elements below */
+    z-index: 1; /* Ensure it's above the main background image */
+    display: block;
+}
+
+/* Business Table Specific Styles (re-added and adjusted for index.html) */
+.business-table-bg {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: absolute; /* Absolute positioning within intro-image-section */
+    top: 50%; /* Changed to 50% for vertical centering */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Combined for both horizontal and vertical centering */
+    width: 95%; /* Increased width */
+    max-width: 900px; /* Increased max-width */
+    z-index: 4; /* Ensure it's above canvas and background image */
+    animation: fadeInUp 0.8s ease-out; /* Re-apply fade-in animation */
+}
+.business-table-bg .header {
+    background: var(--primary-gradient);
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+.business-table-bg .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: slide 20s linear infinite;
+    animation-play-state: var(--animation-play-state); /* Controlled by JS */
+}
+.business-table-bg .header h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+}
+.business-table-bg .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+}
+.business-table-bg .content {
+    padding: 40px;
+}
+.business-table-bg .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for better responsiveness */
+    gap: 25px;
+    margin-top: 20px;
+}
+/* 구형 브라우저 지원을 위한 플렉스박스 폴백 */
+@supports not (display: grid) {
+    .business-table-bg .info-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .business-table-bg .info-card {
+        flex: 1 1 300px; /* Adjusted flex-basis */
+    }
+}
+.business-table-bg .info-card {
+    background: var(--card-gradient);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    tabindex: 0;
+    role: region;
+    aria-label: "프로젝트 정보 카드";
+}
+.business-table-bg .info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+.business-table-bg .info-card:hover,
+.business-table-bg .info-card:focus {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+.business-table-bg .info-item {
+    display: flex; /* Ensure flexbox for horizontal alignment */
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+.business-table-bg .info-item:last-child {
+    border-bottom: none;
+}
+.business-table-bg .info-item:hover {
+    padding-left: 10px;
+    background: var(--hover-bg);
+    border-radius: 8px;
+}
+.business-table-bg .info-label {
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    position: relative;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.business-table-bg .info-label::before {
+    content: '●';
+    color: var(--primary-color);
+    margin-right: 8px;
+    font-size: 0.8rem;
+    aria-hidden: true;
+}
+.business-table-bg .info-label::after {
+    content: ':';
+    margin-left: 4px;
+    color: var(--primary-dark);
+}
+.business-table-bg .info-value {
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: right;
+    font-size: 1rem;
+    line-height: 1.4;
+    flex-grow: 1; /* Allow it to grow and take available space */
+    word-break: break-word; /* Ensure long text wraps */
+}
+.business-table-bg .highlight {
+    background: var(--highlight-gradient);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+}
+.business-table-bg .highlight::before {
+    content: '★';
+    margin-right: 4px;
+    font-size: 0.8rem;
+    aria-hidden: true;
+}
+.business-table-bg .location-highlight {
+    background: var(--location-gradient);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+}
+.business-table-bg .location-highlight::before {
+    content: '📍';
+    margin-right: 4px;
+    font-size: 0.8rem;
+    aria-hidden: true;
+}
+/* 키보드 네비게이션 개선 */
+.business-table-bg .info-card:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+/* 스크린 리더 전용 텍스트 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .business-table-bg .header::before {
+        animation-play-state: paused;
+    }
+}
+/* 배터리 절약 모드에서 애니메이션 일시정지 */
+@media (prefers-reduced-motion: reduce), (update: slow) {
+    .business-table-bg .header::before {
+        animation-play-state: paused;
+    }
+}
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+    .intro-image-section {
+        height: calc(100vh - 60px); /* Adjusted for mobile header height */
+    }
+
+    /* Mobile navigation */
+    .nav-menu > ul { /* Hide horizontal menu */
+        display: none;
+    }
+    .hamburger-menu { /* Show hamburger button */
+        display: block;
+    }
+
+    /* Navigation menu when open (mobile) */
+    .nav-menu.nav-open > ul {
+        display: flex;
+        flex-direction: column; /* Vertical alignment */
+        position: absolute;
+        top: 60px; /* Below header */
+        left: 0;
+        right: 0; /* Equivalent to width: 100%; */
+        background-color: #004d40; /* Same as header background */
+        padding: 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 999; /* Above other content */
+    }
+    .nav-menu.nav-open > ul li {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-menu.nav-open > ul li a {
+        display: block; /* Make entire link area clickable */
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .nav-menu.nav-open > ul li:last-child a {
+        border-bottom: none;
+    }
+    .nav-menu.nav-open > ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Mobile-only line break */
+    .mobile-only-break {
+        display: block; /* Show on mobile */
+    }
+    .business-table-bg {
+        /* Removed top: 10% for mobile as it's now handled by transform */
+        width: 95%; /* Ensure it takes up most of the width */
+        padding: 15px; /* Adjusted padding for mobile */
+    }
+    .business-table-bg .header {
+        padding: 25px 20px;
+    }
+    .business-table-bg .header h2 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+    .business-table-bg .subtitle {
+        font-size: 1rem;
+    }
+    .business-table-bg .content {
+        padding: 25px 20px;
+    }
+    .business-table-bg .info-grid {
+        grid-template-columns: 1fr; /* Allow stacking on very small screens if needed, or force 2 columns if space allows */
+        gap: 20px;
+    }
+    .business-table-bg .info-card {
+        padding: 20px;
+    }
+    /* Removed flex-direction: column from info-item for mobile to keep horizontal alignment */
+    .business-table-bg .info-item {
+        /* flex-direction: column; */ /* Removed this line */
+        align-items: center; /* Center items vertically if they wrap */
+        gap: 8px;
+        padding: 12px 0;
+    }
+    .business-table-bg .info-label {
+        min-width: auto;
+        font-size: 0.95rem;
+        /* width: auto; */ /* Allow label to take natural width */
+    }
+    .business-table-bg .info-value {
+        text-align: right; /* Keep text aligned to right */
+        width: auto; /* Allow value to take natural width */
+        font-size: 0.95rem;
+        padding-left: 0; /* Remove padding if not stacking */
+    }
+    .business-table-bg .info-item:hover {
+        padding-left: 5px;
+    }
+}
+@media (max-width: 480px) {
+    .business-table-bg .header h2 {
+        font-size: 1.75rem;
+    }
+    .business-table-bg .info-card {
+        padding: 15px;
+    }
+    .business-table-bg .info-item {
+        padding: 10px 0;
+    }
+    .business-table-bg .info-label, .business-table-bg .info-value {
+        font-size: 0.9rem;
+    }
+}
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+    .business-table-bg { /* Apply dark mode styles to the actual table wrapper */
+        background-color: rgba(30, 30, 30, 0.95);
+    }
+    .business-table-bg .info-card {
+        background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .business-table-bg .info-label {
+        color: #c084fc;
+    }
+    .business-table-bg .info-value {
+        color: var(--text-light);
+    }
+    .business-table-bg .info-item {
+        border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .business-table-bg .info-item:hover {
+        background: rgba(139, 92, 246, 0.1);
+    }
+}
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+    .business-table-bg .info-card {
+        border: 2px solid #000;
+    }
+    .business-table-bg .highlight, .business-table-bg .location-highlight {
+        background: #000;
+        color: #fff;
+    }
+}
+/* 인쇄 최적화 */
+@media print {
+    .business-table-bg {
+        box-shadow: none;
+        border-radius: 0;
+        background: white;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+    .business-table-bg .header {
+        background: #8B5CF6 !important;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+    .business-table-bg .header::before {
+        display: none;
+    }
+    .business-table-bg .info-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+    .business-table-bg .highlight, .business-table-bg .location-highlight {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}
+
+@media (max-width:500px){
+    .popup-box{ width: 97vw; min-width: 0; max-width: 98vw; }
+}
+
+/* 하단 고정 배너 스타일 */
+.bottom-fixed-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #8A2387 0%, #E94057 50%, #F27121 100%); /* 그라데이션 배경 */
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+    box-shadow: 0 -2px 15px rgba(138, 35, 135, 0.4), 0 -2px 30px rgba(242, 113, 33, 0.6);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transform: translateY(100%); /* 초기에는 화면 아래에 숨김 */
+    transition: transform 0.5s ease-out; /* 슬라이드 업 애니메이션 */
+    cursor: pointer; /* 마우스 오버 시 손가락 모양으로 변경 */
+}
+
+.bottom-fixed-banner.show {
+    transform: translateY(0); /* 화면 위로 슬라이드 */
+}
+
+.bottom-fixed-banner p {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.bottom-fixed-banner .close-bottom-banner {
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bottom-fixed-banner .close-bottom-banner:hover {
+    background-color: #fff;
+    color: #004d40;
+}
+
+/* New styles for the location map image section */
+.location-map-section {
+    max-width: 1200px; /* Same as .container for consistent width */
+    margin: 40px auto; /* Centered with top/bottom margin */
+    padding: 10px; /* Padding for the border */
+    border: 5px solid #FFD700; /* Yellow border */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden; /* Ensures content within border-radius is clipped */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+.location-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px; /* Slightly smaller border-radius for the image itself */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
