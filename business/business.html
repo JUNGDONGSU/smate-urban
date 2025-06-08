@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>평택진위쌍용스마트어반</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- 외부 CSS 파일 연결 -->
+</head>
+<body>
+    <header>
+    <div class="logo">
+      <a href="index.html" style="display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 1.2em; font-weight: bold;">
+        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/logo1.webp?raw=true" alt="쌍용 로고" style="height: 28px; width: auto; vertical-align: middle;">
+        쌍용 스마트어반
+      </a>
+    </div>
 
+        <button class="hamburger-menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navigation-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu">
+            <ul id="navigation-menu">
+                <li><a href="business.html">사업안내</a></li>
+                <li><a href="location.html">입지안내</a></li>
+                <li><a href="complex.html">단지안내</a></li>
+                <li><a href="unit.html">세대안내</a></li>
+                <li><a href="tel:1688-5925">1688-5925</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 비디오 팝업 관련 요소는 삭제됨 -->
+
+    <section class="intro-image-section">
+        <canvas id="sparkle-canvas"></canvas>
+        <!-- 기존 배경 이미지 -->
+        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/birdseyeview-optimized.webp?raw=true" alt="쌍용 스마트어반 배경" class="background-image-main">
+        <!-- background-image-bottom은 이제 별도의 섹션으로 이동됨 -->
+
+        <div class="business-table-bg">
+            <div class="header" role="banner">
+                <h1 class="sr-only">사업안내 페이지</h1>
+                <h2>사업안내</h2>
+                <p class="subtitle">프로젝트 개요 및 상세 정보</p>
+            </div>
+            <main class="content" role="main">
+                <div class="info-grid">
+                    <div class="info-card" tabindex="0" aria-labelledby="location-info">
+                        <h3 id="location-info" class="sr-only">위치 및 면적 정보</h3>
+                        <div class="info-item">
+                            <div class="info-label">위치</div>
+                            <div class="info-value">
+                                <span class="location-highlight">경기도 평택시 진위면</span><br>
+                                가곡리 235-14번지 일원
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">대지면적</div>
+                            <div class="info-value">
+                                <span class="highlight">67,404㎡</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">연면적</div>
+                            <div class="info-value">187,433.21㎡</div>
+                        </div>
+                    </div>
+                    <div class="info-card" tabindex="0" aria-labelledby="building-info">
+                        <h3 id="building-info" class="sr-only">건물 및 주차 정보</h3>
+                        <div class="info-item">
+                            <div class="info-label">세대수</div>
+                            <div class="info-value">
+                                <span class="highlight">1,228세대</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">주차</div>
+                            <div class="info-value">1,601대</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">건폐율</div>
+                            <div class="info-value">22.48%</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">용적률</div>
+                            <div class="info-value">187.63%</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <section class="intro">
+        <h2>프리미엄 라이프의 시작</h2>
+        <p>
+            경기도 평택시 진위면에 위치한 쌍용 스마트어반은 교통, 교육, 생활 인프라를 두루 갖춘 프리미엄 주거단지입니다.<br>
+            총 1,228세대, 4Bay 구조와 혁신적인 평면 설계, 풍부한 커뮤니티 시설까지.<br>
+            당신의 삶을 더욱 가치 있게 만들어줄 새로운 시작을 지금 만나보세요.
+        </p>
+    </section>
+
+    <!-- 새로운 위치 지도 이미지 섹션 -->
+    <section class="location-map-section">
+        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/%EA%B0%80%EA%B3%A12%EC%A7%80%EA%B5%AC%20%EC%9C%84%EC%B9%98.webp" alt="가곡2지구 위치 지도" class="location-map-image">
+    </section>
+
+    <div class="container">
+        <section class="form-section" id="consultation-booking">
+            <h3 class="highlight-title">상담 예약</h3>
+            <form id="inquiryForm">
+                <div>
+                    <label for="userName">성함<span class="required-text">(필수 입력)</span></label>
+                    <input type="text" id="userName" placeholder="성함을 입력하세요">
+                </div>
+                <div>
+                    <label for="userPhone">연락처<span class="required-text">(필수 입력)</span></label>
+                    <input type="text" id="userPhone" placeholder="연락처를 입력하세요 (예: 010-1234-5678)" maxlength="13">
+                </div>
+                <div>
+                    <label for="userAddress">주소<span class="required-text">(필수 입력)</span></label>
+                    <input type="text" id="userAddress" placeholder="주소를 입력하세요">
+                </div>
+                <div>
+                    <label for="inquiryType">문의유형</label>
+                    <select id="inquiryType">
+                        <option value="">문의유형 선택</option>
+                        <option value="상담예약">상담예약</option>
+                        <option value="방문예약">방문예션</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="otherInquiry">기타 문의 내용</label>
+                    <textarea id="otherInquiry" placeholder="기타 문의사항이 있다면 입력해주세요" rows="4"></textarea>
+                </div>
+                <div>
+                    <label for="agreeCheckbox">
+                        <input type="checkbox" id="agreeCheckbox"> 개인정보 수집 및 이용에 동의합니다.
+                    </label>
+                </div>
+                <div class="privacy-text">
+                    ※ 수집된 개인정보는 분양상담 및 향후 관련 정보 안내 목적으로만 활용되며,<br>
+                    이용자의 요청 시 언제든지 삭제 요청이 가능합니다.
+                </div>
+                <button type="submit" id="submitBtn">상담 예약 등록</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- 하단 고정 배너 -->
+    <div id="bottomBanner" class="bottom-fixed-banner">
+        <p>지금 바로 상담 예약하고 특별 혜택 받으세요!</p>
+        <button class="close-bottom-banner" aria-label="하단 배너 닫기">✖</button>
+    </div>
+
+    <footer style="background-color: #e0e0e0; padding: 20px; text-align: center; margin-top: 60px;">
+        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/logo.webp?raw=true" alt="쌍용 스마트어반 로고" style="max-width: 180px; height: auto;">
+    </footer>
+
+    <script src="script.js"></script> <!-- 외부 JavaScript 파일 연결 -->
+</body>
+</html>
