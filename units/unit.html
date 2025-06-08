@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세대 안내 테이블</title>
+    <!-- 외부 CSS 파일 링크 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>세대 타입별 안내</h1>
+            <p>다양한 평형과 구조로 구성된 프리미엄 주거 공간을 확인해보세요</p>
+        </div>
+
+        <div class="units-grid" id="unitsGrid">
+            <!-- 유닛 카드들이 여기에 JavaScript로 생성됩니다 -->
+        </div>
+    </div>
+
+    <!-- 모달 창 -->
+    <div id="unitModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">세대 상세 정보</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 모달 내용이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 외부 JavaScript 파일 링크 -->
+    <script src="script.js"></script>
+</body>
+</html>
