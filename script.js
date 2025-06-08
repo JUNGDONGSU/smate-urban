@@ -601,4 +601,11 @@ window.addEventListener('DOMContentLoaded', () => {
       document.body.classList.remove('keyboard-navigation');
   });
 
+  // Background image blur fade-out logic
+  const backgroundImage = document.querySelector('.intro-image-section .background-image-blur');
+  if (backgroundImage) {
+      setTimeout(() => {
+          backgroundImage.classList.add('background-image-no-blur');
+      }, 5000); // 5초 후 blur-out 클래스 추가
+  }
 });

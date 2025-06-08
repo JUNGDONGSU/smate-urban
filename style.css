@@ -278,10 +278,6 @@ header {
     .popup-box{ width: 97vw; min-width: 0; max-width: 98vw; }
 }
 
-/* Event banner styles (from business.html) */
-/* REMOVED .event-banner styles as requested */
-
-
 /* Intro image section with canvas background */
 .intro-image-section {
   position: relative;
@@ -301,7 +297,7 @@ header {
 }
 .intro-image-section .logo-image {
   position: absolute;
-  top: 55%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: auto;
@@ -313,7 +309,7 @@ header {
 }
 .intro-image-section .overlay-text {
   position: absolute;
-  top: 8%;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
   color: white;
@@ -350,10 +346,17 @@ header {
     z-index: 0; /* Place background image below canvas */
 }
 /* 배경 이미지 블러 처리 (from business.html, adjusted selector) */
-.intro-image-section img[alt*="배경"] {
+.intro-image-section .background-image-blur {
     filter: blur(5px) brightness(0.9); /* Reduced blur from 12px to 5px */
     z-index: 0 !important;
+    transition: filter 3s ease-out; /* Add transition for smooth blur removal */
 }
+
+/* New class to remove blur */
+.intro-image-section .background-image-no-blur {
+    filter: blur(0) brightness(0.9); /* No blur */
+}
+
 
 /* Business Table Specific Styles (moved from business.html and adjusted) */
 .business-info-section { /* New wrapper section for the business table */
@@ -580,8 +583,6 @@ header {
     .intro-image-section {
         height: calc(100vh - 60px); /* Adjusted for mobile header only (banner removed) */
     }
-    /* REMOVED .event-banner mobile styles as requested */
-
     /* Mobile navigation */
     .nav-menu > ul { /* Hide horizontal menu */
         display: none;
@@ -825,9 +826,6 @@ footer {
         background-position: 200% 200%;
     }
 }
-/* REMOVED @keyframes eventBannerSparkle as requested */
-
-
 /* Hover effects for reserveIconBtn */
 #reserveIconBtn:hover {
   box-shadow:0 0 44px 18px #b388ff, 0 8px 40px #9575cd;
