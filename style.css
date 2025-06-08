@@ -1,0 +1,1202 @@
+/* Root variables from business.html */
+:root {
+  --primary-gradient: linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #C084FC 100%);
+  --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --highlight-gradient: linear-gradient(120deg, #fbbf24, #f59e0b);
+  --location-gradient: linear-gradient(120deg, #10b981, #059669);
+  --primary-color: #8B5CF6;
+  --primary-dark: #4c1d95;
+  --text-color: #1e293b;
+  --text-light: #e2e8f0;
+  --border-color: rgba(139, 92, 246, 0.1);
+  --hover-bg: rgba(139, 92, 246, 0.05);
+  --shadow-light: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 20px 40px rgba(139, 92, 246, 0.15);
+  --animation-play-state: running; /* Default animation state for JS control */
+}
+
+/* Basic body styles */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 60px 0 0 0; /* Header height as top padding */
+  background-color: #f4f4f4; /* General body background */
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+  /* Removed padding-bottom for bottom fixed banner */
+}
+/* Header styles */
+header {
+  background-color: #004d40;
+  color: #fff;
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  opacity: 0.9; /* 상단 메뉴바 오파시티 50% */
+}
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+/* Navigation menu styles */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.nav-menu ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+/* Hamburger menu (only on mobile) */
+.hamburger-menu {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1005;
+  margin-left: auto;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.hamburger-menu:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease-in-out;
+}
+/* Hamburger menu active state (changes to X shape) */
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Container for main content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+/* Intro section styles */
+.intro {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+.intro h2 {
+  color: #004d40;
+  margin-bottom: 15px;
+}
+.intro p {
+  font-size: 1.1em;
+  color: #555;
+}
+/* Form section styles */
+.form-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+.form-section h3 {
+  margin-bottom: 20px;
+  color: #004d40;
+  text-align: center;
+}
+
+/* --- Form Element Styles --- */
+.form-section div {
+  margin-bottom: 15px; /* Spacing between form groups */
+}
+
+.form-section label {
+  display: block; /* Make labels take full width */
+  margin-bottom: 8px; /* Space between label and input */
+  font-weight: bold;
+  color: #444;
+}
+
+.form-section input[type="text"],
+.form-section select,
+.form-section textarea {
+  width: 100%; /* Make inputs take full width of their container */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  font-family: 'Noto Sans KR', sans-serif; /* Apply Noto Sans KR font */
+}
+
+.form-section input[type="text"]::placeholder,
+.form-section textarea::placeholder {
+  color: #bbb;
+}
+
+.form-section textarea {
+  resize: vertical; /* Allow vertical resizing for textareas */
+  min-height: 80px; /* Minimum height for textarea */
+}
+
+.form-section select {
+  appearance: none; /* Remove default select arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23004d40%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6c-5%200-9.3%201.8-13.2%205.4A17.6%2017.6%200%200%200%200%2082.2c0%204.7%201.8%208.9%205.4%2013.2l128%20128c3.9%203.9%208.7%205.8%2013.2%205.8s9.3-1.9%2013.2-5.8l128-128c3.6-3.6%205.4-7.8%205.4-12.8%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow for select */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 30px; /* Space for the custom arrow */
+}
+
+.form-section input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.required-text {
+  color: #d32f2f; /* Red color for required text */
+  font-size: 0.9em;
+  margin-left: 5px;
+  font-weight: normal;
+}
+
+.privacy-text {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-section button#submitBtn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #00796b; /* A slightly lighter green for the button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 25px; /* Space above the button */
+}
+
+.form-section button#submitBtn:hover:not(:disabled) {
+  background-color: #004d40; /* Darker green on hover */
+}
+
+.form-section button#submitBtn.btn-disabled {
+  background-color: #cccccc; /* Grey for disabled button */
+  cursor: not-allowed;
+}
+/* --- End of Form Element Styles --- */
+
+/* Video Popup Styles (from business.html) */
+#videoPopup {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none; /* Initial state hidden */
+    align-items: center;
+    justify-content: center;
+}
+.popup-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+}
+.popup-box {
+    position: relative;
+    background: #fff;
+    padding: 0;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.15);
+    max-width: 96vw;
+    width: 400px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.close-btn {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background: #004d40; /* Changed to primary color */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+@media (max-width:500px){
+    .popup-box{ width: 97vw; min-width: 0; max-width: 98vw; }
+}
+
+/* Intro image section with canvas background */
+.intro-image-section {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 60px); /* Adjust height for header only (banner removed) */
+  min-height: 400px;
+  overflow: hidden;
+}
+.intro-image-section img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.intro-image-section .logo-image {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  max-width: 30%;
+  height: auto;
+  z-index: 2;
+  animation: fadeInEntrance 1.5s ease-out forwards, neonPulse 3s infinite alternate ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(0,255,255,0.8));
+}
+.intro-image-section .overlay-text {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  width: 90%;
+  max-width: 1000px;
+  z-index: 3;
+}
+.intro-image-section .overlay-text h2 {
+  font-size: 4em;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: neonStroke 12s linear infinite;
+  margin: 0;
+}
+/* Sparkle and Shooting Star canvas styles */
+#sparkle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  display: block;
+}
+/* Explicit z-index for background image to ensure correct layering */
+.intro-image-section img:first-of-type {
+    z-index: 0; /* Place background image below canvas */
+}
+/* 배경 이미지 블러 처리 (from business.html, adjusted selector) */
+.intro-image-section .background-image-blur {
+    filter: blur(5px) brightness(0.9); /* Reduced blur from 12px to 5px */
+    z-index: 0 !important;
+    transition: filter 3s ease-out; /* Add transition for smooth blur removal */
+}
+
+/* New class to remove blur */
+.intro-image-section .background-image-no-blur {
+    filter: blur(0) brightness(0.9); /* No blur */
+}
+
+
+/* Business Table Specific Styles (moved from business.html and adjusted) */
+.business-info-section { /* New wrapper section for the business table */
+  max-width: 1200px;
+  margin: 40px auto; /* Add margin for spacing and center */
+  padding: 0 20px;
+}
+.business-table-bg {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Removed absolute positioning for normal flow */
+    width: 100%; /* Ensure it takes full width of its parent (.business-info-section) */
+    max-width: 900px; /* Keep max-width from business.html */
+    margin: 0 auto; /* Center it within the new section */
+    overflow: hidden; /* Contains inner elements like header animation */
+    animation: fadeInUp 0.8s ease-out; /* Re-apply fade-in animation */
+}
+.business-table-bg .header {
+    background: var(--primary-gradient);
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+.business-table-bg .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: slide 20s linear infinite;
+    animation-play-state: var(--animation-play-state); /* Controlled by JS */
+}
+.business-table-bg .header h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+}
+.business-table-bg .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+}
+.business-table-bg .content {
+    padding: 40px;
+}
+.business-table-bg .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for better responsiveness */
+    gap: 25px;
+    margin-top: 20px;
+}
+/* 구형 브라우저 지원을 위한 플렉스박스 폴백 */
+@supports not (display: grid) {
+    .business-table-bg .info-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .business-table-bg .info-card {
+        flex: 1 1 300px; /* Adjusted flex-basis */
+    }
+}
+.business-table-bg .info-card {
+    background: var(--card-gradient);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    /* tabindex: 0; role: region; aria-label: "프로젝트 정보 카드"; - These are HTML attributes, not CSS */
+}
+.business-table-bg .info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+.business-table-bg .info-card:hover,
+.business-table-bg .info-card:focus {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+.business-table-bg .info-item {
+    display: flex; /* Ensure flexbox for horizontal alignment */
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+.business-table-bg .info-item:last-child {
+    border-bottom: none;
+}
+.business-table-bg .info-item:hover {
+    padding-left: 10px;
+    background: var(--hover-bg);
+    border-radius: 8px;
+}
+.business-table-bg .info-label {
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    position: relative;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.business-table-bg .info-label::before {
+    content: '●';
+    color: var(--primary-color);
+    margin-right: 8px;
+    font-size: 0.8rem;
+    /* aria-hidden: true; - HTML attribute */
+}
+.business-table-bg .info-label::after {
+    content: ':';
+    margin-left: 4px;
+    color: var(--primary-dark);
+}
+.business-table-bg .info-value {
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: right;
+    font-size: 1rem;
+    line-height: 1.4;
+    flex-grow: 1; /* Allow it to grow and take available space */
+    word-break: break-word; /* Ensure long text wraps */
+}
+.business-table-bg .highlight {
+    background: var(--highlight-gradient);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+}
+.business-table-bg .highlight::before {
+    content: '★';
+    margin-right: 4px;
+    font-size: 0.8rem;
+    /* aria-hidden: true; - HTML attribute */
+}
+.business-table-bg .location-highlight {
+    background: var(--location-gradient);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+}
+.business-table-bg .location-highlight::before {
+    content: '📍';
+    margin-right: 4px;
+    font-size: 0.8rem;
+    /* aria-hidden: true; - HTML attribute */
+}
+/* 키보드 네비게이션 개선 */
+.business-table-bg .info-card:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+/* 스크린 리더 전용 텍스트 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .business-table-bg .header::before {
+        animation-play-state: paused;
+    }
+}
+/* 배터리 절약 모드에서 애니메이션 일시정지 */
+@media (prefers-reduced-motion: reduce), (update: slow) {
+    .business-table-bg .header::before {
+        animation-play-state: paused;
+    }
+}
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+    .intro-image-section {
+        height: calc(100vh - 60px); /* Adjusted for mobile header only (banner removed) */
+    }
+    /* Mobile navigation */
+    .nav-menu > ul { /* Hide horizontal menu */
+        display: none;
+    }
+    .hamburger-menu { /* Show hamburger button */
+        display: block;
+    }
+
+    /* Navigation menu when open (mobile) */
+    .nav-menu.nav-open > ul {
+        display: flex;
+        flex-direction: column; /* Vertical alignment */
+        position: absolute;
+        top: 60px; /* Below header */
+        left: 0;
+        right: 0; /* Equivalent to width: 100%; */
+        background-color: #004d40; /* Same as header background */
+        padding: 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 999; /* Above other content */
+    }
+    .nav-menu.nav-open > ul li {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-menu.nav-open > ul li a {
+        display: block; /* Make entire link area clickable */
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-menu.nav-open > ul li:last-child a {
+        border-bottom: none;
+    }
+    .nav-menu.nav-open > ul li a:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    /* Mobile-only line break */
+    .mobile-only-break {
+        display: block; /* Show on mobile */
+    }
+
+    .business-table-bg {
+        width: 95%; /* Ensure it takes up most of the width */
+        padding: 15px; /* Adjusted padding for mobile */
+    }
+    .business-table-bg .header {
+        padding: 25px 20px;
+    }
+    .business-table-bg .header h2 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+    .business-table-bg .subtitle {
+        font-size: 1rem;
+    }
+    .business-table-bg .content {
+        padding: 25px 20px;
+    }
+    .business-table-bg .info-grid {
+        grid-template-columns: 1fr; /* Allow stacking on very small screens if needed, or force 2 columns if space allows */
+        gap: 20px;
+    }
+    .business-table-bg .info-card {
+        padding: 20px;
+    }
+    .business-table-bg .info-item {
+        align-items: center; /* Center items vertically if they wrap */
+        gap: 8px;
+        padding: 12px 0;
+    }
+    .business-table-bg .info-label {
+        min-width: auto;
+        font-size: 0.95rem;
+    }
+    .business-table-bg .info-value {
+        text-align: right; /* Keep text aligned to right */
+        width: auto; /* Allow value to take natural width */
+        font-size: 0.95rem;
+        padding-left: 0; /* Remove padding if not stacking */
+    }
+    .business-table-bg .info-item:hover {
+        padding-left: 5px;
+    }
+}
+@media (max-width: 480px) {
+    .business-table-bg .header h2 {
+        font-size: 1.75rem;
+    }
+    .business-table-bg .info-card {
+        padding: 15px;
+    }
+    .business-table-bg .info-item {
+        padding: 10px 0;
+    }
+    .business-table-bg .info-label, .business-table-bg .info-value {
+        font-size: 0.9rem;
+    }
+}
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+    .business-table-bg { /* Apply dark mode styles to the actual table wrapper */
+        background-color: rgba(30, 30, 30, 0.95);
+    }
+    .business-table-bg .info-card {
+        background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .business-table-bg .info-label {
+        color: #c084fc;
+    }
+    .business-table-bg .info-value {
+        color: var(--text-light);
+    }
+    .business-table-bg .info-item {
+        border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .business-table-bg .info-item:hover {
+        background: rgba(139, 92, 246, 0.1);
+    }
+}
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+    .business-table-bg .info-card {
+        border: 2px solid #000;
+    }
+    .business-table-bg .highlight, .business-table-bg .location-highlight {
+        background: #000;
+        color: #fff;
+    }
+}
+/* 인쇄 최적화 */
+@media print {
+    .business-table-bg {
+        box-shadow: none;
+        border-radius: 0;
+        background: white;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+    .business-table-bg .header {
+        background: #8B5CF6 !important;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+    .business-table-bg .header::before {
+        display: none;
+    }
+    .business-table-bg .info-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+    .business-table-bg .highlight, .business-table-bg .location-highlight {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}
+
+/* Footer styles */
+footer {
+  background-color: #e0e0e0;
+  padding: 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer-logo {
+  max-width: 180px;
+  height: auto;
+}
+
+/* Header Logo Specific Styles */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.logo-image {
+  height: 28px; /* Set height for logo image */
+  width: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Vertically align with text */
+}
+
+/* Keyframe animations */
+@keyframes fadeInEntrance {
+  0% { opacity: 0; transform: translate(-50%, -60%) scale(0.5); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes neonPulse {
+  0% { filter: drop-shadow(0 0 5px rgba(0,255,255,0.5)) drop-shadow(0 0 10px rgba(0,255,255,0.5)); }
+  100% { filter: drop-shadow(0 0 20px rgba(0,255,255,1)) drop-shadow(0 0 30px rgba(0,255,255,1)); }
+}
+@keyframes neonStroke {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+@keyframes lavenderPulse {
+  0% {
+    background-position: 0% 70%;
+    filter: brightness(1.13) saturate(1.2);
+  }
+  50% {
+    background-position: 100% 30%;
+    filter: brightness(1.25) saturate(1.35);
+  }
+  100% {
+    background-position: 0% 70%;
+    filter: brightness(1.13) saturate(1.2);
+  }
+}
+@keyframes bouncePop {
+  0%   { transform: scale(1) translateY(0);}
+  30%  { transform: scale(1.09) translateY(-7px);}
+  70%  { transform: scale(0.97) translateY(2px);}
+  100% { transform: scale(1) translateY(0);}
+}
+
+/* New keyframes from business.html */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes slide {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 200% 200%;
+    }
+}
+/* Hover effects for reserveIconBtn */
+#reserveIconBtn:hover {
+  box-shadow:0 0 44px 18px #b388ff, 0 8px 40px #9575cd;
+  outline:6px solid #fffde7;
+  filter: brightness(1.15) saturate(1.4) drop-shadow(0 0 8px #7c4dff);
+}
+
+/* Styles for #reserveSubmitBtn */
+#reserveSubmitBtn {
+  width:100%;
+  padding:12px 0;
+  border-radius:8px;
+  background:linear-gradient(90deg,#6a9cff,#b695ff); /* Active color */
+  color:#fff;
+  font-weight:bold;
+  font-size:1.1em;
+  border:none;
+  cursor: pointer; /* Default cursor for active button */
+  transition: background-color 0.3s ease, cursor 0.1s ease; /* Smooth transition */
+}
+
+/* Style for disabled #reserveSubmitBtn */
+#reserveSubmitBtn.btn-disabled {
+  background: #cccccc; /* Gray color for disabled */
+  cursor: not-allowed; /* Not-allowed cursor for disabled */
+  pointer-events: none; /* Prevent click events on disabled state */
+}
+
+/* Hover effect for active #reserveSubmitBtn */
+#reserveSubmitBtn:not(.btn-disabled):hover {
+  /* Slightly darken or change gradient on hover when not disabled */
+  background: linear-gradient(90deg,#5a8ae0,#a07eff);
+}
+
+
+/* Mobile-specific styles */
+@media (max-width: 1024px) {
+  /* Mobile logo size and position */
+  .intro-image-section .logo-image {
+    top: 55%;
+    max-width: 70%;
+  }
+  .mobile-only-break {
+    display: block; /* Show hidden <br> tags to force line breaks */
+  }
+  .intro-image-section .overlay-text h2 {
+    font-size: 2em;
+  }
+  .intro-image-section {
+    height: calc(100vh - 60px); /* Adjust height for mobile */
+  }
+  .nav-menu > ul {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
+  .nav-menu.nav-open > ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #004d40;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+  .nav-menu.nav-open > ul li {
+    width: 100%;
+    text-align: center;
+  }
+  .nav-menu.nav-open > ul li a {
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-menu.nav-open > ul li:last-child a {
+    border-bottom: none;
+  }
+  .nav-menu.nav-open > ul li a:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+}
+
+/* Desktop-only line break (hidden on mobile) */
+.mobile-only-break { display: none; }
+
+.highlight-title {
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+/* location.css 에서 가져온 스타일 시작 */
+#locationContentWrapper {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 입지안내 섹션의 배경 */
+  padding-top: 40px; /* 상단 여백 추가 */
+}
+
+.location-container { /* 기존 container와 구분되는 새로운 클래스 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    animation: none;
+}
+
+.hero {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, #f8f9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero .subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.location-image {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.location-image:hover {
+    transform: scale(1.02);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 60px 0;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card h3::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+}
+
+.card ul {
+    list-style: none;
+}
+
+.card li {
+    margin-bottom: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.card li:last-child {
+    border-bottom: none;
+}
+
+.card li:hover {
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 8px;
+    padding-left: 12px;
+}
+
+.card strong {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.premium-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(248, 249, 255, 0.1));
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-top: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.premium-section h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, #f8f9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.premium-section p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.floating-elements {
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-circle:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-circle:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.floating-circle:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 60px 0;
+}
+
+@media (max-width: 768px) {
+    .location-container {
+        padding: 20px 15px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .premium-section {
+        padding: 40px 20px;
+    }
+
+    .premium-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .premium-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* location.css 에서 가져온 스타일 끝 */
+
+/* New styles for the location map image section */
+.location-map-section {
+    max-width: 1200px; /* Same as .container for consistent width */
+    margin: 40px auto; /* Centered with top/bottom margin */
+    padding: 10px; /* Padding for the border */
+    border: 5px solid #FFD700; /* Yellow border */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden; /* Ensures content within border-radius is clipped */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+.location-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px; /* Slightly smaller border-radius for the image itself */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
