@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>평택진위쌍용스마트어반</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/logo1.webp" type="image/webp">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html" style="display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 1.2em; font-weight: bold;">
+        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/logo1.webp?raw=true" alt="쌍용 로고" style="height: 28px; width: auto; vertical-align: middle;">
+        쌍용 스마트어반
+      </a>
+    </div>
+    <button class="hamburger-menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navigation-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-menu">
+      <ul id="navigation-menu">
+        <li><a href="business.html">사업안내</a></li>
+        <li><a href="location.html">입지안내</a></li>
+        <li><a href="complex.html">단지안내</a></li>
+        <li><a href="unit.html">세대안내</a></li>
+        <li><a href="tel:1688-5925">1688-5925</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ★★ HERO/메인 배경 이미지 ★★ -->
+  <section class="intro-image-section">
+    <canvas id="sparkle-canvas"></canvas>
+    <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/birdseyeview-optimized.webp?raw=true" alt="쌍용 스마트어반 배경" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+    <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/Smart_URBAN_logo.webp?raw=true" alt="쌍용 스마트어반 로고" class="logo-image"/>
+    <div class="overlay-text">
+      <!-- 쉼표 뒤에 자동 줄바꿈 적용 -->
+      <h2><span>“살기 좋아서 오르고,<br><br class="mobile-only-break"> 오르니까 사고 싶은 아파트”</span></h2>
+    </div>
+  </section>
+
+  <section class="intro">
+    <h2>프리미엄 라이프의 시작</h2>
+    <p>
+      경기도 평택시 진위면에 위치한 쌍용 스마트어반은 교통, 교육, 생활 인프라를 두루 갖춘 프리미엄 주거단지입니다.<br>
+      총 1,228세대, 4Bay 구조와 혁신적인 평면 설계, 풍부한 커뮤니티 시설까지.<br>
+      당신의 삶을 더욱 가치 있게 만들어줄 새로운 시작을 지금 만나보세요.
+    </p>
+  </section>
+
+  <div class="container">
+    <section class="form-section" id="consultation-booking">
+      <h3 class="highlight-title">상담 예약</h3>
+      <form id="inquiryForm">
+        <div>
+            <label for="userName">성함<span class="required-text">(필수 입력)</span></label>
+            <input type="text" id="userName" placeholder="성함을 입력하세요">
+        </div>
+        <div>
+            <label for="userPhone">연락처<span class="required-text">(필수 입력)</span></label>
+            <input type="text" id="userPhone" placeholder="연락처를 입력하세요 (예: 010-1234-5678)" maxlength="13">
+        </div>
+        <div>
+            <label for="userAddress">주소<span class="required-text">(필수 입력)</span></label>
+            <input type="text" id="userAddress" placeholder="주소를 입력하세요">
+        </div>
+        <div>
+            <label for="inquiryType">문의유형</label>
+            <select id="inquiryType">
+              <option value="">문의유형 선택</option>
+              <option value="상담예약">상담예약</option>
+              <option value="방문예약">방문예약</option>
+              <option value="기타">기타</option>
+            </select>
+        </div>
+        <div>
+            <label for="otherInquiry">기타 문의 내용</label>
+            <textarea id="otherInquiry" placeholder="기타 문의사항이 있다면 입력해주세요" rows="4"></textarea>
+        </div>
+        <div>
+            <label for="agreeCheckbox">
+                <input type="checkbox" id="agreeCheckbox"> 개인정보 수집 및 이용에 동의합니다.
+            </label>
+        </div>
+        <div class="privacy-text">
+          ※ 수집된 개인정보는 분양상담 및 향후 관련 정보 안내 목적으로만 활용되며,<br>
+          이용자의 요청 시 언제든지 삭제 요청이 가능합니다.
+        </div>
+        <button type="submit" id="submitBtn">상담 예약 등록</button>
+      </form>
+    </section>
+  </div>
+
+  <footer style="background-color: #e0e0e0; padding: 20px; text-align: center; margin-top: 60px;">
+    <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/logo.webp?raw=true" alt="쌍용 스마트어반 로고" style="max-width: 180px; height: auto;">
+  </footer>
+
+  <!-- 아이콘 (상담원 헤드셋 SVG 아이콘: 우측 하단, 네온+튀는 애니메이션) -->
+  <button id="reserveIconBtn" style="
+    position:fixed;bottom:36px;right:36px;border:none;cursor:pointer;border-radius:50%;
+    padding:10px;width:84px;height:84px;z-index:9999;
+    box-shadow:0 0 28px 8px #a084ff99, 0 4px 32px #9575cd88;
+    background:linear-gradient(135deg,#b39ddb,#7c4dff,#ede7f6,#9575cd 90%);
+    background-size:300% 300%;
+    animation:lavenderPulse 2.2s ease-in-out infinite, bouncePop 1.5s infinite alternate;
+    outline:4px solid #fff;
+    transition:box-shadow .18s, outline .22s;">
+    <!-- SVG: 상담원 헤드셋 아이콘 (중앙 크게, 라운드 축소) -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" viewBox="0 0 48 48" fill="none" style="display:block;margin:auto;">
+      <circle cx="24" cy="24" r="15" fill="#fff7ff"/>
+      <path d="M12 28v-4c0-6.627 5.373-12 12-12s12 5.373 12 12v4" stroke="#7c4dff" stroke-width="2.6"/>
+      <rect x="16" y="28" width="16" height="7" rx="3.5" fill="#7c4dff"/>
+      <circle cx="24" cy="31.5" r="2.5" fill="#fff"/>
+      <rect x="32" y="32" width="3" height="7" rx="1.5" fill="#b39ddb"/>
+      <rect x="13" y="32" width="3" height="7" rx="1.5" fill="#b39ddb"/>
+      <rect x="20" y="36" width="8" height="2" rx="1" fill="#d7dbfa"/>
+    </svg>
+  </button>
+
+  <!-- 팝업 박스 (초기엔 숨김) -->
+  <div id="reservePopup" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;width:360px;max-width:90vw;background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.3);padding:32px 24px 24px 24px;text-align:center;">
+    <h2 style="margin-bottom:16px;">방문/상담 예약</h2>
+    <form id="reserveForm">
+      <input type="text" name="name" id="reserveName" placeholder="이름" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #eee;">
+      <input type="tel" name="phone" id="reservePhone" placeholder="010-0000-0000" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #eee;">
+      <select name="type" id="reserveType" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #eee;">
+        <option value="">예약 구분 선택</option>
+        <option value="visit">방문 예약</option>
+        <option value="consult">상담 예약</option>
+      </select>
+      <textarea name="message" placeholder="요청 사항(선택)" style="width:100%;padding:10px;margin-bottom:16px;border-radius:8px;border:1px solid #eee;resize:vertical;"></textarea>
+      <button type="submit" id="reserveSubmitBtn" class="btn-disabled" disabled>예약 신청</button>
+    </form>
+    <button id="closePopupBtn" style="margin-top:12px;background:none;border:none;color:#888;font-size:1.1em;cursor:pointer;">닫기</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
