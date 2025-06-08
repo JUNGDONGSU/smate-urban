@@ -23,14 +23,23 @@
     </button>
     <nav class="nav-menu">
       <ul id="navigation-menu">
-        <li><a href="/business/business.html">사업안내</a></li>
-        <li><a href="/location/location.html">입지안내</a></li>
-        <li><a href="/complex/complex.html">단지안내</a></li>
-        <li><a href="/uni/unit.html">세대안내</a></li>
+        <li><a href="business/business.html">사업안내</a></li>
+        <li><a href="location/location.html">입지안내</a></li>
+        <li><a href="complex/complex.html">단지안내</a></li>
+        <li><a href="unit/unit.html">세대안내</a></li>
         <li><a href="tel:1688-5925">1688-5925</a></li>
       </ul>
     </nav>
   </header>
+
+  <!-- Video Popup HTML (from business.html) -->
+  <div id="videoPopup" style="display: none;">
+      <div class="popup-bg"></div>
+      <div class="popup-box">
+          <video id="popupVideo" src="https://github.com/JUNGDONGSU/smate-urban/raw/main/smartUrban.mp4" controls autoplay playsinline muted style="width:100%;border-radius:16px;"></video>
+          <button class="close-btn" onclick="closeVideoPopup()">✖</button>
+      </div>
+  </div>
 
   <!-- ★★ HERO/메인 배경 이미지 ★★ -->
   <section class="intro-image-section">
@@ -51,6 +60,63 @@
       당신의 삶을 더욱 가치 있게 만들어줄 새로운 시작을 지금 만나보세요.
     </p>
   </section>
+
+  <!-- business.html에서 가져온 사업안내 테이블 섹션 -->
+  <section class="business-info-section">
+    <div class="business-table-bg">
+      <div class="header" role="banner">
+          <h1 class="sr-only">사업안내 페이지</h1>
+          <h2>사업안내</h2>
+          <p class="subtitle">프로젝트 개요 및 상세 정보</p>
+      </div>
+      <main class="content" role="main">
+          <div class="info-grid">
+              <div class="info-card" tabindex="0" aria-labelledby="location-info">
+                  <h3 id="location-info" class="sr-only">위치 및 면적 정보</h3>
+                  <div class="info-item">
+                      <div class="info-label">위치</div>
+                      <div class="info-value">
+                          <span class="location-highlight">경기도 평택시 진위면</span><br>
+                          가곡리 235-14번지 일원
+                      </div>
+                  </div>
+                  <div class="info-item">
+                      <div class="info-label">대지면적</div>
+                      <div class="info-value">
+                          <span class="highlight">67,404㎡</span>
+                      </div>
+                  </div>
+                  <div class="info-item">
+                      <div class="info-label">연면적</div>
+                      <div class="info-value">187,433.21㎡</div>
+                  </div>
+              </div>
+              <div class="info-card" tabindex="0" aria-labelledby="building-info">
+                  <h3 id="building-info" class="sr-only">건물 및 주차 정보</h3>
+                  <div class="info-item">
+                      <div class="info-label">세대수</div>
+                      <div class="info-value">
+                          <span class="highlight">1,228세대</span>
+                      </div>
+                  </div>
+                  <div class="info-item">
+                      <div class="info-label">주차</div>
+                      <div class="info-value">1,601대</div>
+                  </div>
+                  <div class="info-item">
+                      <div class="info-label">건폐율</div>
+                      <div class="info-value">22.48%</div>
+                  </div>
+                  <div class="info-item">
+                      <div class="info-label">용적률</div>
+                      <div class="info-value">187.63%</div>
+                  </div>
+              </div>
+          </div>
+      </main>
+    </div>
+  </section>
+
 
   <div class="container">
     <section class="form-section" id="consultation-booking">

@@ -27,6 +27,22 @@ function displayMessage(message) {
   console.log(`Displaying message: ${message}`); // Debugging
 }
 
+// Video Popup functions
+function openVideoPopup() {
+    document.getElementById("videoPopup").style.display = "flex";
+    const video = document.getElementById("popupVideo");
+    video.play().catch(error => {
+        console.log("비디오 자동 재생 실패 (사용자 상호작용 필요):", error);
+    });
+}
+
+function closeVideoPopup() {
+    document.getElementById("videoPopup").style.display = "none";
+    document.getElementById("popupVideo").pause();
+    document.getElementById("popupVideo").currentTime = 0;
+}
+
+
 // Execute when DOM content is fully loaded
 window.addEventListener('DOMContentLoaded', () => {
   console.log("DOMContentLoaded fired."); // Debugging
@@ -104,14 +120,10 @@ window.addEventListener('DOMContentLoaded', () => {
       if (agreeCheckbox.checked) {
         submitBtn.classList.remove('btn-disabled');
         submitBtn.disabled = false;
-        console.log("Agree checkbox checked. Submit button enabled."); // Debugging
       } else {
         submitBtn.classList.add('btn-disabled');
         submitBtn.disabled = true;
-        console.log("Agree checkbox unchecked. Submit button disabled."); // Debugging
       }
-    } else {
-      console.log("Agree checkbox or submit button not found for updateButtonState."); // Debugging
     }
   }
 
@@ -143,31 +155,26 @@ window.addEventListener('DOMContentLoaded', () => {
       // Required fields and validation (maintaining existing logic)
       if (!name || !phone || !address) {
         displayMessage('성함, 연락처, 주소는 반드시 입력해야 합니다.');
-        console.log("Form validation failed: Missing required fields."); // Debugging
         return;
       }
 
       const phoneRegex = /^\d{2,3}-\d{3,4}-\d{4}$/;
       if (!phoneRegex.test(phone)) {
         displayMessage('올바른 연락처 형식을 입력해주세요. (예: 010-1234-5678)');
-        console.log("Form validation failed: Invalid phone format."); // Debugging
         return;
       }
 
       if (inquiry === '') {
         displayMessage('문의 유형을 선택해주세요.');
-        console.log("Form validation failed: Inquiry type not selected."); // Debugging
         return;
       }
       if (inquiry === '기타' && !otherText) {
         displayMessage('기타 문의 내용을 입력해주세요.');
-        console.log("Form validation failed: Other inquiry text missing."); // Debugging
         return;
       }
 
       if (!agreeCheckbox.checked) {
         displayMessage('개인정보 수집 및 이용에 동의해야 등록이 가능합니다.');
-        console.log("Form validation failed: Privacy agreement not checked."); // Debugging
         return;
       }
 
@@ -426,10 +433,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const closePopupBtn = document.getElementById('closePopupBtn');
 
   // For the reservation popup phone input
-  const reserveNameInput = document.getElementById('reserveName'); // Added this line
+  const reserveNameInput = document.getElementById('reserveName');
   const reservePhoneInput = document.getElementById('reservePhone');
-  const reserveTypeSelect = document.getElementById('reserveType'); // Changed to getElementById
-  const reserveSubmitBtn = document.getElementById('reserveSubmitBtn'); // Added this line
+  const reserveTypeSelect = document.getElementById('reserveType');
+  const reserveSubmitBtn = document.getElementById('reserveSubmitBtn');
 
 
   // Function to update the state of the reserve submit button
@@ -563,4 +570,35 @@ window.addEventListener('DOMContentLoaded', () => {
   } else {
     console.log("Reservation icon, popup, or close button not found. Skipping reservation popup logic.");
   }
+
+  // Battery API for animation control (from business.html)
+  if ('getBattery' in navigator) {
+      navigator.getBattery().then(function(battery) {
+          function updateAnimationState() {
+              // Select the business table header in the main page
+              const businessTableHeader = document.querySelector('.business-table-bg .header');
+              if (businessTableHeader) {
+                  if (battery.level < 0.2 || !battery.charging) {
+                      document.documentElement.style.setProperty('--animation-play-state', 'paused');
+                  } else {
+                      document.documentElement.style.setProperty('--animation-play-state', 'running');
+                  }
+              }
+          }
+          battery.addEventListener('chargingchange', updateAnimationState);
+          battery.addEventListener('levelchange', updateAnimationState);
+          updateAnimationState(); // Initial call
+      });
+  }
+
+  // Keyboard accessibility improvements (from business.html)
+  document.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+          document.body.classList.add('keyboard-navigation');
+      }
+  });
+  document.addEventListener('mousedown', function() {
+      document.body.classList.remove('keyboard-navigation');
+  });
+
 });
