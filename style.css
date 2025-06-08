@@ -21,10 +21,11 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   margin: 0;
   padding: 60px 0 0 0; /* Header height as top padding */
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; /* General body background */
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Removed padding-bottom for bottom fixed banner */
 }
 /* Header styles */
 header {
@@ -40,6 +41,7 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
+  opacity: 0.9; /* 상단 메뉴바 오파시티 50% */
 }
 .logo a {
   color: #fff;
@@ -309,7 +311,7 @@ header {
 }
 .intro-image-section .overlay-text {
   position: absolute;
-  top: 6%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   color: white;
@@ -918,4 +920,283 @@ footer {
 .highlight-title {
   font-size: 1.8em;
   font-weight: 700;
+}
+
+/* location.css 에서 가져온 스타일 시작 */
+#locationContentWrapper {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 입지안내 섹션의 배경 */
+  padding-top: 40px; /* 상단 여백 추가 */
+}
+
+.location-container { /* 기존 container와 구분되는 새로운 클래스 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    animation: none;
+}
+
+.hero {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, #f8f9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero .subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.location-image {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.location-image:hover {
+    transform: scale(1.02);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 60px 0;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card h3::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+}
+
+.card ul {
+    list-style: none;
+}
+
+.card li {
+    margin-bottom: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.card li:last-child {
+    border-bottom: none;
+}
+
+.card li:hover {
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 8px;
+    padding-left: 12px;
+}
+
+.card strong {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.premium-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(248, 249, 255, 0.1));
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-top: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.premium-section h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, #f8f9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.premium-section p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.floating-elements {
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-circle:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-circle:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.floating-circle:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 60px 0;
+}
+
+@media (max-width: 768px) {
+    .location-container {
+        padding: 20px 15px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .premium-section {
+        padding: 40px 20px;
+    }
+
+    .premium-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .premium-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* location.css 에서 가져온 스타일 끝 */
+
+/* New styles for the location map image section */
+.location-map-section {
+    max-width: 1200px; /* Same as .container for consistent width */
+    margin: 40px auto; /* Centered with top/bottom margin */
+    padding: 10px; /* Padding for the border */
+    border: 5px solid #FFD700; /* Yellow border */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden; /* Ensures content within border-radius is clipped */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+.location-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px; /* Slightly smaller border-radius for the image itself */
+    object-fit: cover; /* Ensures image covers the area without distortion */
 }

@@ -23,10 +23,11 @@
     </button>
     <nav class="nav-menu">
       <ul id="navigation-menu">
-        <li><a href="business/business.html">사업안내</a></li>
-        <li><a href="location/location.html">입지안내</a></li>
-        <li><a href="complex/complex.html">단지안내</a></li>
-        <li><a href="unit/unit.html">세대안내</a></li>
+        <!-- 경로 업데이트: 절대 경로 사용 -->
+        <li><a href="/business/business.html">사업안내</a></li>
+        <li><a href="/location/location.html">입지안내</a></li>
+        <li><a href="/complex/complex.html">단지안내</a></li>
+        <li><a href="/unit/unit.html">세대안내</a></li>
         <li><a href="tel:1688-5925">1688-5925</a></li>
       </ul>
     </nav>
@@ -118,6 +119,78 @@
     </div>
   </section>
 
+  <!-- location.html에서 가져온 입지안내 섹션 시작 -->
+  <div id="locationContentWrapper">
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="location-container"> <!-- 기존 container와 구분되는 새로운 클래스 -->
+        <section class="hero">
+            <h1>입지안내</h1>
+            <p class="subtitle">사통팔달 교통망과 풍부한 생활 인프라, 우수한 교육 환경을 자랑하는 최적의 입지</p>
+            <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/wide-location-2.webp?raw=true" alt="평택 진위 쌍용 스마트어반 입지" class="location-image">
+        </section>
+
+        <div class="section-divider"></div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h3>교통 환경</h3>
+                <ul>
+                    <li><strong>진위역 (도보 가능):</strong> 1호선 진위역이 인접하여 수도권 이동 편리</li>
+                    <li><strong>평택제천고속도로, 경부고속도로:</strong> 단지 인근 IC를 통해 주요 도시로 빠르게 이동</li>
+                    <li><strong>31번 국도, 1번 국도:</strong> 평택 시내 및 오산, 동탄 등 인근 지역으로의 접근성 우수</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>생활 인프라</h3>
+                <ul>
+                    <li><strong>쇼핑 및 편의시설:</strong> 하나로마트, 홈플러스 등 대형마트 인접, 다양한 상업시설 이용 편리</li>
+                    <li><strong>의료기관:</strong> 평택성모병원, 굿모닝병원 등 종합병원 및 다수의 병의원 이용 편리</li>
+                    <li><strong>공원 및 여가시설:</strong> 진위천 시민유원지, 무봉산 등 자연과 함께하는 여가 생활 가능</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>교육 환경</h3>
+                <ul>
+                    <li><strong>진위초, 진위중, 진위고:</strong> 단지 인근에 위치하여 안심 도보 통학 가능</li>
+                    <li><strong>학원가:</strong> 주변 학원가를 통해 자녀 교육 환경 우수</li>
+                    <li><strong>교육 특구:</strong> 평택 교육지원청 인근으로 우수한 교육 인프라 조성</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>미래 가치</h3>
+                <ul>
+                    <li><strong>진위2일반산업단지, LG디지털파크:</strong> 대규모 산업단지 인접으로 풍부한 배후 수요</li>
+                    <li><strong>평택 브레인시티 (예정):</strong> 향후 개발 호재로 인한 높은 미래 가치 기대</li>
+                    <li><strong>GTX-C 연장 계획:</strong> 수도권 광역교통망 확충으로 더욱 편리한 접근성</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 삭제 요청된 '프리미엄 라이프의 시작' 섹션 -->
+        <!-- <section class="premium-section">
+            <h2>프리미엄 라이프의 시작</h2>
+            <p>
+                경기도 평택시 진위면에 위치한 쌍용 스마트어반은 교통, 교육, 생활 인프라를 두루 갖춘 프리미엄 주거단지입니다.<br><br>
+                총 1,228세대, 4Bay 구조와 혁신적인 평면 설계, 풍부한 커뮤니티 시설까지.<br><br>
+                당신의 삶을 더욱 가치 있게 만들어줄 새로운 시작을 지금 만나보세요.
+            </p>
+        </section> -->
+    </div>
+  </div>
+  <!-- location.html에서 가져온 입지안내 섹션 끝 -->
+
+  <!-- 기존 위치 지도 이미지 섹션 유지 (location.html과 중복되나, 여기를 메인으로 사용) -->
+  <section class="location-map-section">
+      <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/wide-location-1.webp" alt="가곡2지구 위치 지도" class="location-map-image">
+  </section>
 
   <div class="container">
     <section class="form-section" id="consultation-booking">

@@ -608,4 +608,28 @@ window.addEventListener('DOMContentLoaded', () => {
           backgroundImage.classList.add('background-image-no-blur');
       }, 5000); // 5초 후 blur-out 클래스 추가
   }
+
+  // location.js에서 가져온 스크롤 애니메이션 (cards, premium-section)
+  const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+          }
+      });
+  }, observerOptions);
+
+  // 애니메이션 대상 요소들 관찰
+  const animatedElements = document.querySelectorAll('#locationContentWrapper .card, #locationContentWrapper .premium-section');
+  animatedElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+  });
 });
