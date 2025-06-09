@@ -63,62 +63,222 @@
     </p>
   </section>
 
-  <!-- business.html에서 가져온 사업안내 테이블 섹션 -->
-  <section class="business-info-section">
-    <div class="business-table-bg">
-      <div class="header" role="banner">
-          <h1 class="sr-only">사업안내 페이지</h1>
-          <h2>사업안내</h2>
-          <p class="subtitle">프로젝트 개요 및 상세 정보</p>
-      </div>
-      <main class="content" role="main">
-          <div class="info-grid">
-              <div class="info-card" tabindex="0" aria-labelledby="location-info">
-                  <h3 id="location-info" class="sr-only">위치 및 면적 정보</h3>
-                  <div class="info-item">
-                      <div class="info-label">위치</div>
-                      <div class="info-value">
-                          <span class="location-highlight">경기도 평택시 진위면</span><br>
-                          가곡리 235-14번지 일원
-                      </div>
-                  </div>
-                  <div class="info-item">
-                      <div class="info-label">대지면적</div>
-                      <div class="info-value">
-                          <span class="highlight">67,404㎡</span>
-                      </div>
-                  </div>
-                  <div class="info-item">
-                      <div class="info-label">연면적</div>
-                      <div class="info-value">187,433.21㎡</div>
-                  </div>
-              </div>
-              <div class="info-card" tabindex="0" aria-labelledby="building-info">
-                  <h3 id="building-info" class="sr-only">건물 및 주차 정보</h3>
-                  <div class="info-item">
-                      <div class="info-label">세대수</div>
-                      <div class="info-value">
-                          <span class="highlight">1,228세대</span>
-                      </div>
-                  </div>
-                  <div class="info-item">
-                      <div class="info-label">주차</div>
-                      <div class="info-value">1,601대</div>
-                  </div>
-                  <div class="info-item">
-                      <div class="info-label">건폐율</div>
-                      <div class="info-value">22.48%</div>
-                  </div>
-                  <div class="info-item">
-                      <div class="info-label">용적률</div>
-                      <div class="info-value">187.63%</div>
-                  </div>
-              </div>
-          </div>
-      </main>
+  <!-- ======================================= -->
+  <!--        complex.html 단지 안내 섹션 시작    -->
+  <!-- ======================================= -->
+  <section id="complex-guide">
+    <div class="complex-container">
+        <h1>평택 진위 쌍용 스마트어반</h1>
+        
+        <div class="complex-section">
+            <h2>사업 개요</h2>
+            <div class="complex-info-grid">
+                <div class="complex-info-item">
+                    <h3>사업위치</h3>
+                    <p>경기도 평택시 진위면 가곡리 235-14번지 일원</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>용도지구</h3>
+                    <p>일반주거지역</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>대지면적</h3>
+                    <p><span class="complex-highlight">67,404.00㎡</span> (20,389.62평)</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>건축면적</h3>
+                    <p><span class="complex-highlight">15,155.81㎡</span> (4,584.61평)</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>연면적</h3>
+                    <p><span class="complex-highlight">187,433.21㎡</span> (56,698.29평)</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>건폐율/용적률</h3>
+                    <p>건폐율: 22.48% (법정 60%)<br>용적률: 187.63% (법정 200%)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="complex-section">
+            <h2>건축 규모</h2>
+            <div class="complex-info-grid">
+                <div class="complex-info-item">
+                    <h3>구조</h3>
+                    <p>지하 2층, 지상 29층</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>동수</h3>
+                    <p>아파트 <span class="complex-highlight">14개동</span></p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>총 세대수</h3>
+                    <p><span class="complex-highlight">1,228세대</span></p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>주차시설</h3>
+                    <p>총 1,601대 (지하주차 100%)<br>법정 주차율 130%</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="complex-section">
+            <h2>주택형별 공급 현황</h2>
+            <div class="apartment-types">
+                <div class="apartment-card">
+                    <h4>64㎡형 (A,B,C타입)</h4>
+                    <div class="area">19.47~19.51평</div>
+                    <div class="count">총 368세대 (29.97%)</div>
+                </div>
+                <div class="apartment-card">
+                    <h4>77㎡형 (A,B,C타입)</h4>
+                    <div class="area">23.48~23.58평</div>
+                    <div class="count">총 72세대 (5.86%)</div>
+                </div>
+                <div class="apartment-card">
+                    <h4>84㎡형 (A,B,C,D타입)</h4>
+                    <div class="area">25.68~25.69평</div>
+                    <div class="count">총 788세대 (64.17%)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="complex-section">
+            <h2>상세 면적 정보</h2>
+            <table class="details-table">
+                <thead>
+                    <tr>
+                        <th>주택형</th>
+                        <th>세대수</th>
+                        <th>전용면적</th>
+                        <th>공급면적</th>
+                        <th>세대비율</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>64A형</td>
+                        <td>184</td>
+                        <td>64.37㎡ (19.47평)</td>
+                        <td>83.69㎡ (25.31평)</td>
+                        <td>14.98%</td>
+                    </tr>
+                    <tr>
+                        <td>64B형</td>
+                        <td>92</td>
+                        <td>64.43㎡ (19.49평)</td>
+                        <td>84.50㎡ (25.56평)</td>
+                        <td>7.49%</td>
+                    </tr>
+                    <tr>
+                        <td>64C형</td>
+                        <td>92</td>
+                        <td>64.52㎡ (19.51평)</td>
+                        <td>84.88㎡ (25.67평)</td>
+                        <td>7.49%</td>
+                    </tr>
+                    <tr>
+                        <td>77A형</td>
+                        <td>36</td>
+                        <td>77.80㎡ (23.53평)</td>
+                        <td>100.19㎡ (30.31평)</td>
+                        <td>2.93%</td>
+                    </tr>
+                    <tr>
+                        <td>77B형</td>
+                        <td>18</td>
+                        <td>77.62㎡ (23.48평)</td>
+                        <td>101.63㎡ (30.74평)</td>
+                        <td>1.47%</td>
+                    </tr>
+                    <tr>
+                        <td>77C형</td>
+                        <td>18</td>
+                        <td>77.94㎡ (23.58평)</td>
+                        <td>101.64㎡ (30.75평)</td>
+                        <td>1.47%</td>
+                    </tr>
+                    <tr>
+                        <td>84A형</td>
+                        <td>501</td>
+                        <td>84.88㎡ (25.68평)</td>
+                        <td>109.49㎡ (33.12평)</td>
+                        <td>40.80%</td>
+                    </tr>
+                    <tr>
+                        <td>84B형</td>
+                        <td>112</td>
+                        <td>84.92㎡ (25.69평)</td>
+                        <td>111.11㎡ (33.61평)</td>
+                        <td>9.12%</td>
+                    </tr>
+                    <tr>
+                        <td>84C형</td>
+                        <td>112</td>
+                        <td>84.93㎡ (25.69평)</td>
+                        <td>110.50㎡ (33.43평)</td>
+                        <td>9.12%</td>
+                    </tr>
+                    <tr>
+                        <td>84D형</td>
+                        <td>63</td>
+                        <td>84.92㎡ (25.69평)</td>
+                        <td>111.36㎡ (33.69평)</td>
+                        <td>5.13%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="complex-section">
+            <h2>단지 특징</h2>
+            <ul class="feature-list">
+                <li>전세형 민간임대 아파트</li>
+                <li>청약 없는 회원제 방식</li>
+                <li>4BAY 맞통풍 구조의 혁신평면</li>
+                <li>안방 드레스룸 및 현관 워크인 장 구성</li>
+                <li>주방 페트리(팬트리) 공간 구성</li>
+                <li>지하 100% 주차시설 (법정 주차율 130%)</li>
+                <li>2면 개방형 타워 구조</li>
+                <li>세대구분형 1.5룸 혁신평면 (84D형)</li>
+            </ul>
+        </div>
+        
+        <div class="complex-section">
+            <h2>입지 정보</h2>
+            <div class="complex-info-grid">
+                <div class="complex-info-item">
+                    <h3>교통 접근성</h3>
+                    <p>• SRT 평택 지제역 인근<br>
+                    • 평택 동부고속화도로<br>
+                    • 남사 진위 IC<br>
+                    • 동탄 트램 1, 2호선</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>교육 환경</h3>
+                    <p>• 사업지 인근 학군 상위 86% 수준<br>
+                    • 1.5km 이내 진위초, 진위중, 진위고 위치</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>산업 단지</h3>
+                    <p>• LG전자 및 삼성전자 협력업체<br>
+                    • 첨단기술 산업 클러스터<br>
+                    • 용인 반도체 클러스터 직선거리 6km</p>
+                </div>
+                <div class="complex-info-item">
+                    <h3>개발 계획</h3>
+                    <p>• 평택시 2035 도시기본계획<br>
+                    • 인구 120만 계획<br>
+                    • 도시개발사업 22개 추진</p>
+                </div>
+            </div>
+        </div>
     </div>
   </section>
-
+  <!-- ======================================= -->
+  <!--        complex.html 단지 안내 섹션 끝      -->
+  <!-- ======================================= -->
+  
   <!-- location.html에서 가져온 입지안내 섹션 시작 -->
   <div id="locationContentWrapper">
     <div class="floating-elements">
@@ -129,7 +289,7 @@
 
     <div class="location-container"> <!-- 기존 container와 구분되는 새로운 클래스 -->
         <section class="hero">
-            <h1>입지안내</h1>
+            <h1>입 지 안 내</h1>
             <p class="subtitle">사통팔달 교통망과 풍부한 생활 인프라, 우수한 교육 환경을 자랑하는 최적의 입지</p>
             <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/wide-location-2.webp?raw=true" alt="평택 진위 쌍용 스마트어반 입지" class="location-image">
         </section>
@@ -173,16 +333,6 @@
                 </ul>
             </div>
         </div>
-
-        <!-- 삭제 요청된 '프리미엄 라이프의 시작' 섹션 -->
-        <!-- <section class="premium-section">
-            <h2>프리미엄 라이프의 시작</h2>
-            <p>
-                경기도 평택시 진위면에 위치한 쌍용 스마트어반은 교통, 교육, 생활 인프라를 두루 갖춘 프리미엄 주거단지입니다.<br><br>
-                총 1,228세대, 4Bay 구조와 혁신적인 평면 설계, 풍부한 커뮤니티 시설까지.<br><br>
-                당신의 삶을 더욱 가치 있게 만들어줄 새로운 시작을 지금 만나보세요.
-            </p>
-        </section> -->
     </div>
   </div>
   <!-- location.html에서 가져온 입지안내 섹션 끝 -->
