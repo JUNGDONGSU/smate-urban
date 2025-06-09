@@ -1,19 +1,6 @@
-/* Root variables from business.html */
+/* Root variables */
 :root {
-  --primary-gradient: linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #C084FC 100%);
   --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --card-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  --highlight-gradient: linear-gradient(120deg, #fbbf24, #f59e0b);
-  --location-gradient: linear-gradient(120deg, #10b981, #059669);
-  --primary-color: #8B5CF6;
-  --primary-dark: #4c1d95;
-  --text-color: #1e293b;
-  --text-light: #e2e8f0;
-  --border-color: rgba(139, 92, 246, 0.1);
-  --hover-bg: rgba(139, 92, 246, 0.05);
-  --shadow-light: 0 10px 20px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 20px 40px rgba(139, 92, 246, 0.15);
-  --animation-play-state: running; /* Default animation state for JS control */
 }
 
 /* Basic body styles */
@@ -25,7 +12,6 @@ body {
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
-  /* Removed padding-bottom for bottom fixed banner */
 }
 /* Header styles */
 header {
@@ -41,7 +27,7 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
-  opacity: 0.9; /* 상단 메뉴바 오파시티 50% */
+  opacity: 0.9;
 }
 .logo a {
   color: #fff;
@@ -140,12 +126,12 @@ header {
 
 /* --- Form Element Styles --- */
 .form-section div {
-  margin-bottom: 15px; /* Spacing between form groups */
+  margin-bottom: 15px;
 }
 
 .form-section label {
-  display: block; /* Make labels take full width */
-  margin-bottom: 8px; /* Space between label and input */
+  display: block;
+  margin-bottom: 8px;
   font-weight: bold;
   color: #444;
 }
@@ -153,13 +139,13 @@ header {
 .form-section input[type="text"],
 .form-section select,
 .form-section textarea {
-  width: 100%; /* Make inputs take full width of their container */
+  width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1em;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  font-family: 'Noto Sans KR', sans-serif; /* Apply Noto Sans KR font */
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .form-section input[type="text"]::placeholder,
@@ -168,19 +154,19 @@ header {
 }
 
 .form-section textarea {
-  resize: vertical; /* Allow vertical resizing for textareas */
-  min-height: 80px; /* Minimum height for textarea */
+  resize: vertical;
+  min-height: 80px;
 }
 
 .form-section select {
-  appearance: none; /* Remove default select arrow */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23004d40%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6c-5%200-9.3%201.8-13.2%205.4A17.6%2017.6%200%200%200%200%2082.2c0%204.7%201.8%208.9%205.4%2013.2l128%20128c3.9%203.9%208.7%205.8%2013.2%205.8s9.3-1.9%2013.2-5.8l128-128c3.6-3.6%205.4-7.8%205.4-12.8%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow for select */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23004d40%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6c-5%200-9.3%201.8-13.2%205.4A17.6%2017.6%200%200%200%200%2082.2c0%204.7%201.8%208.9%205.4%2013.2l128%20128c3.9%203.9%208.7%205.8%2013.2%205.8s9.3-1.9%2013.2-5.8l128-128c3.6-3.6%205.4-7.8%205.4-12.8%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 12px;
-  padding-right: 30px; /* Space for the custom arrow */
+  padding-right: 30px;
 }
 
 .form-section input[type="checkbox"] {
@@ -188,7 +174,7 @@ header {
 }
 
 .required-text {
-  color: #d32f2f; /* Red color for required text */
+  color: #d32f2f;
   font-size: 0.9em;
   margin-left: 5px;
   font-weight: normal;
@@ -208,7 +194,7 @@ header {
   display: block;
   width: 100%;
   padding: 15px;
-  background-color: #00796b; /* A slightly lighter green for the button */
+  background-color: #00796b;
   color: white;
   border: none;
   border-radius: 4px;
@@ -216,20 +202,20 @@ header {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 25px; /* Space above the button */
+  margin-top: 25px;
 }
 
 .form-section button#submitBtn:hover:not(:disabled) {
-  background-color: #004d40; /* Darker green on hover */
+  background-color: #004d40;
 }
 
 .form-section button#submitBtn.btn-disabled {
-  background-color: #cccccc; /* Grey for disabled button */
+  background-color: #cccccc;
   cursor: not-allowed;
 }
 /* --- End of Form Element Styles --- */
 
-/* Video Popup Styles (from business.html) */
+/* Video Popup Styles */
 #videoPopup {
     position: fixed;
     z-index: 9999;
@@ -237,7 +223,7 @@ header {
     top: 0;
     width: 100vw;
     height: 100vh;
-    display: none; /* Initial state hidden */
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -267,7 +253,7 @@ header {
     position: absolute;
     top: 6px;
     right: 10px;
-    background: #004d40; /* Changed to primary color */
+    background: #004d40;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -284,7 +270,7 @@ header {
 .intro-image-section {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 60px); /* Adjust height for header only (banner removed) */
+  height: calc(100vh - 60px);
   min-height: 400px;
   overflow: hidden;
 }
@@ -343,212 +329,21 @@ header {
   z-index: 1;
   display: block;
 }
-/* Explicit z-index for background image to ensure correct layering */
+/* Explicit z-index for background image */
 .intro-image-section img:first-of-type {
-    z-index: 0; /* Place background image below canvas */
+    z-index: 0;
 }
-/* 배경 이미지 블러 처리 (from business.html, adjusted selector) */
+/* Background Image Blur */
 .intro-image-section .background-image-blur {
-    filter: blur(5px) brightness(0.9); /* Reduced blur from 12px to 5px */
+    filter: blur(5px) brightness(0.9);
     z-index: 0 !important;
-    transition: filter 3s ease-out; /* Add transition for smooth blur removal */
+    transition: filter 3s ease-out;
 }
-
-/* New class to remove blur */
 .intro-image-section .background-image-no-blur {
-    filter: blur(0) brightness(0.9); /* No blur */
+    filter: blur(0) brightness(0.9);
 }
 
-
-/* Business Table Specific Styles (moved from business.html and adjusted) */
-.business-info-section { /* New wrapper section for the business table */
-  max-width: 1200px;
-  margin: 40px auto; /* Add margin for spacing and center */
-  padding: 0 20px;
-}
-.business-table-bg {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    /* Removed absolute positioning for normal flow */
-    width: 100%; /* Ensure it takes full width of its parent (.business-info-section) */
-    max-width: 900px; /* Keep max-width from business.html */
-    margin: 0 auto; /* Center it within the new section */
-    overflow: hidden; /* Contains inner elements like header animation */
-    animation: fadeInUp 0.8s ease-out; /* Re-apply fade-in animation */
-}
-.business-table-bg .header {
-    background: var(--primary-gradient);
-    padding: 40px 30px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px 8px 0 0;
-}
-.business-table-bg .header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(255, 255, 255, 0.1) 10px,
-        rgba(255, 255, 255, 0.1) 20px
-    );
-    animation: slide 20s linear infinite;
-    animation-play-state: var(--animation-play-state); /* Controlled by JS */
-}
-.business-table-bg .header h2 {
-    font-size: 2.5rem;
-    color: white;
-    margin-bottom: 10px;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    position: relative;
-    z-index: 1;
-    letter-spacing: 2px;
-}
-.business-table-bg .subtitle {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 1;
-}
-.business-table-bg .content {
-    padding: 40px;
-}
-.business-table-bg .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for better responsiveness */
-    gap: 25px;
-    margin-top: 20px;
-}
-/* 구형 브라우저 지원을 위한 플렉스박스 폴백 */
-@supports not (display: grid) {
-    .business-table-bg .info-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .business-table-bg .info-card {
-        flex: 1 1 300px; /* Adjusted flex-basis */
-    }
-}
-.business-table-bg .info-card {
-    background: var(--card-gradient);
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: var(--shadow-light);
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    /* tabindex: 0; role: region; aria-label: "프로젝트 정보 카드"; - These are HTML attributes, not CSS */
-}
-.business-table-bg .info-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--primary-gradient);
-}
-.business-table-bg .info-card:hover,
-.business-table-bg .info-card:focus {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-.business-table-bg .info-item {
-    display: flex; /* Ensure flexbox for horizontal alignment */
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-.business-table-bg .info-item:last-child {
-    border-bottom: none;
-}
-.business-table-bg .info-item:hover {
-    padding-left: 10px;
-    background: var(--hover-bg);
-    border-radius: 8px;
-}
-.business-table-bg .info-label {
-    font-weight: 600;
-    color: var(--primary-dark);
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    min-width: 100px;
-    position: relative;
-    flex-shrink: 0; /* Prevent shrinking */
-}
-.business-table-bg .info-label::before {
-    content: '●';
-    color: var(--primary-color);
-    margin-right: 8px;
-    font-size: 0.8rem;
-    /* aria-hidden: true; - HTML attribute */
-}
-.business-table-bg .info-label::after {
-    content: ':';
-    margin-left: 4px;
-    color: var(--primary-dark);
-}
-.business-table-bg .info-value {
-    font-weight: 500;
-    color: var(--text-color);
-    text-align: right;
-    font-size: 1rem;
-    line-height: 1.4;
-    flex-grow: 1; /* Allow it to grow and take available space */
-    word-break: break-word; /* Ensure long text wraps */
-}
-.business-table-bg .highlight {
-    background: var(--highlight-gradient);
-    color: white;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    position: relative;
-}
-.business-table-bg .highlight::before {
-    content: '★';
-    margin-right: 4px;
-    font-size: 0.8rem;
-    /* aria-hidden: true; - HTML attribute */
-}
-.business-table-bg .location-highlight {
-    background: var(--location-gradient);
-    color: white;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    position: relative;
-}
-.business-table-bg .location-highlight::before {
-    content: '📍';
-    margin-right: 4px;
-    font-size: 0.8rem;
-    /* aria-hidden: true; - HTML attribute */
-}
-/* 키보드 네비게이션 개선 */
-.business-table-bg .info-card:focus-visible {
-    outline: 3px solid var(--primary-color);
-    outline-offset: 2px;
-}
-/* 스크린 리더 전용 텍스트 */
+/* Screen Reader Only */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -561,57 +356,35 @@ header {
     border: 0;
 }
 
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    .business-table-bg .header::before {
-        animation-play-state: paused;
-    }
-}
-/* 배터리 절약 모드에서 애니메이션 일시정지 */
-@media (prefers-reduced-motion: reduce), (update: slow) {
-    .business-table-bg .header::before {
-        animation-play-state: paused;
-    }
-}
-/* 모바일 최적화 */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .intro-image-section {
-        height: calc(100vh - 60px); /* Adjusted for mobile header only (banner removed) */
+        height: calc(100vh - 60px);
     }
-    /* Mobile navigation */
-    .nav-menu > ul { /* Hide horizontal menu */
+    .nav-menu > ul {
         display: none;
     }
-    .hamburger-menu { /* Show hamburger button */
+    .hamburger-menu {
         display: block;
     }
-
-    /* Navigation menu when open (mobile) */
     .nav-menu.nav-open > ul {
         display: flex;
-        flex-direction: column; /* Vertical alignment */
+        flex-direction: column;
         position: absolute;
-        top: 60px; /* Below header */
+        top: 60px;
         left: 0;
-        right: 0; /* Equivalent to width: 100%; */
+        right: 0;
         background-color: #004d40;
         padding: 0;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 999; /* Above other content */
+        z-index: 999;
     }
     .nav-menu.nav-open > ul li {
         width: 100%;
         text-align: center;
     }
     .nav-menu.nav-open > ul li a {
-        display: block; /* Make entire link area clickable */
+        display: block;
         padding: 15px 20px;
         border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -621,127 +394,8 @@ header {
     .nav-menu.nav-open > ul li a:hover {
         background-color: rgba(255,255,255,0.1);
     }
-
-    /* Mobile-only line break */
     .mobile-only-break {
-        display: block; /* Show on mobile */
-    }
-
-    .business-table-bg {
-        width: 95%; /* Ensure it takes up most of the width */
-        padding: 15px; /* Adjusted padding for mobile */
-    }
-    .business-table-bg .header {
-        padding: 25px 20px;
-    }
-    .business-table-bg .header h2 {
-        font-size: 2rem;
-        letter-spacing: 1px;
-    }
-    .business-table-bg .subtitle {
-        font-size: 1rem;
-    }
-    .business-table-bg .content {
-        padding: 25px 20px;
-    }
-    .business-table-bg .info-grid {
-        grid-template-columns: 1fr; /* Allow stacking on very small screens if needed, or force 2 columns if space allows */
-        gap: 20px;
-    }
-    .business-table-bg .info-card {
-        padding: 20px;
-    }
-    .business-table-bg .info-item {
-        align-items: center; /* Center items vertically if they wrap */
-        gap: 8px;
-        padding: 12px 0;
-    }
-    .business-table-bg .info-label {
-        min-width: auto;
-        font-size: 0.95rem;
-    }
-    .business-table-bg .info-value {
-        text-align: right; /* Keep text aligned to right */
-        width: auto; /* Allow value to take natural width */
-        font-size: 0.95rem;
-        padding-left: 0; /* Remove padding if not stacking */
-    }
-    .business-table-bg .info-item:hover {
-        padding-left: 5px;
-    }
-}
-@media (max-width: 480px) {
-    .business-table-bg .header h2 {
-        font-size: 1.75rem;
-    }
-    .business-table-bg .info-card {
-        padding: 15px;
-    }
-    .business-table-bg .info-item {
-        padding: 10px 0;
-    }
-    .business-table-bg .info-label, .business-table-bg .info-value {
-        font-size: 0.9rem;
-    }
-}
-/* 다크모드 지원 */
-@media (prefers-color-scheme: dark) {
-    .business-table-bg { /* Apply dark mode styles to the actual table wrapper */
-        background-color: rgba(30, 30, 30, 0.95);
-    }
-    .business-table-bg .info-card {
-        background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
-        border: 1px solid rgba(139, 92, 246, 0.3);
-    }
-    .business-table-bg .info-label {
-        color: #c084fc;
-    }
-    .business-table-bg .info-value {
-        color: var(--text-light);
-    }
-    .business-table-bg .info-item {
-        border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-    }
-    .business-table-bg .info-item:hover {
-        background: rgba(139, 92, 246, 0.1);
-    }
-}
-/* 고대비 모드 지원 */
-@media (prefers-contrast: high) {
-    .business-table-bg .info-card {
-        border: 2px solid #000;
-    }
-    .business-table-bg .highlight, .business-table-bg .location-highlight {
-        background: #000;
-        color: #fff;
-    }
-}
-/* 인쇄 최적화 */
-@media print {
-    .business-table-bg {
-        box-shadow: none;
-        border-radius: 0;
-        background: white;
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-    }
-    .business-table-bg .header {
-        background: #8B5CF6 !important;
-        -webkit-print-color-adjust: exact;
-        color-adjust: exact;
-    }
-    .business-table-bg .header::before {
-        display: none;
-    }
-    .business-table-bg .info-card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 1px solid #ddd;
-        margin-bottom: 20px;
-    }
-    .business-table-bg .highlight, .business-table-bg .location-highlight {
-        -webkit-print-color-adjust: exact;
-        color-adjust: exact;
+        display: block;
     }
 }
 
@@ -770,9 +424,9 @@ footer {
 }
 
 .logo-image {
-  height: 28px; /* Set height for logo image */
-  width: auto; /* Maintain aspect ratio */
-  vertical-align: middle; /* Vertically align with text */
+  height: 28px;
+  width: auto;
+  vertical-align: middle;
 }
 
 /* Keyframe animations */
@@ -809,25 +463,6 @@ footer {
   100% { transform: scale(1) translateY(0);}
 }
 
-/* New keyframes from business.html */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-@keyframes slide {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 200% 200%;
-    }
-}
 /* Hover effects for reserveIconBtn */
 #reserveIconBtn:hover {
   box-shadow:0 0 44px 18px #b388ff, 0 8px 40px #9575cd;
@@ -840,44 +475,42 @@ footer {
   width:100%;
   padding:12px 0;
   border-radius:8px;
-  background:linear-gradient(90deg,#6a9cff,#b695ff); /* Active color */
+  background:linear-gradient(90deg,#6a9cff,#b695ff);
   color:#fff;
   font-weight:bold;
   font-size:1.1em;
   border:none;
-  cursor: pointer; /* Default cursor for active button */
-  transition: background-color 0.3s ease, cursor 0.1s ease; /* Smooth transition */
+  cursor: pointer;
+  transition: background-color 0.3s ease, cursor 0.1s ease;
 }
 
 /* Style for disabled #reserveSubmitBtn */
 #reserveSubmitBtn.btn-disabled {
-  background: #cccccc; /* Gray color for disabled */
-  cursor: not-allowed; /* Not-allowed cursor for disabled */
-  pointer-events: none; /* Prevent click events on disabled state */
+  background: #cccccc;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Hover effect for active #reserveSubmitBtn */
 #reserveSubmitBtn:not(.btn-disabled):hover {
-  /* Slightly darken or change gradient on hover when not disabled */
   background: linear-gradient(90deg,#5a8ae0,#a07eff);
 }
 
 
 /* Mobile-specific styles */
 @media (max-width: 1024px) {
-  /* Mobile logo size and position */
   .intro-image-section .logo-image {
     top: 55%;
     max-width: 70%;
   }
   .mobile-only-break {
-    display: block; /* Show hidden <br> tags to force line breaks */
+    display: block;
   }
   .intro-image-section .overlay-text h2 {
     font-size: 2em;
   }
   .intro-image-section {
-    height: calc(100vh - 60px); /* Adjust height for mobile */
+    height: calc(100vh - 60px);
   }
   .nav-menu > ul {
     display: none;
@@ -922,13 +555,15 @@ footer {
   font-weight: 700;
 }
 
-/* location.css 에서 가져온 스타일 시작 */
+/* ======================================= */
+/* location.css Styles                     */
+/* ======================================= */
 #locationContentWrapper {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 입지안내 섹션의 배경 컬러 다시 추가 */
-  padding-top: 40px; /* 상단 여백 추가 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding-top: 40px;
 }
 
-.location-container { /* 기존 container와 구분되는 새로운 클래스 */
+.location-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -1179,24 +814,223 @@ footer {
         font-size: 1.1rem;
     }
 }
+/* ======================================= */
+/* location.css Styles End                 */
+/* ======================================= */
 
-/* location.css 에서 가져온 스타일 끝 */
 
-/* New styles for the location map image section */
+/* Location Map Image Section */
 .location-map-section {
-    max-width: 1200px; /* Same as .container for consistent width */
-    margin: 40px auto; /* Centered with top/bottom margin */
-    padding: 10px; /* Padding for the border */
-    border: 5px solid #FFD700; /* Yellow border */
-    border-radius: 20px; /* Rounded corners */
-    overflow: hidden; /* Ensures content within border-radius is clipped */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 10px;
+    border: 5px solid #FFD700;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .location-map-image {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px; /* Slightly smaller border-radius for the image itself */
-    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+/* ======================================= */
+/* complex.html Styles                     */
+/* ======================================= */
+
+#complex-guide {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 40px 20px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+#complex-guide * {
+    box-sizing: border-box;
+}
+
+.complex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+#complex-guide h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.complex-section {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+}
+
+.complex-section h2 {
+    color: #667eea;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.complex-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.complex-info-item {
+    background: linear-gradient(135deg, #f8f9ff, #e8ebff);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.complex-info-item h3 {
+    color: #667eea;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.complex-info-item p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.apartment-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.apartment-card {
+    background: linear-gradient(135deg, #fff, #f8f9ff);
+    border: 2px solid #e0e7ff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apartment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+}
+
+.apartment-card h4 {
+    color: #667eea;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.apartment-card .area {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #764ba2;
+    margin-bottom: 5px;
+}
+
+.apartment-card .count {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.details-table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.details-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.details-table tr:nth-child(even) {
+    background: #f8f9ff;
+}
+
+.complex-highlight {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.feature-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .complex-container {
+        padding: 20px;
+    }
+    
+    #complex-guide h1 {
+        font-size: 2rem;
+    }
+    
+    .complex-info-grid,
+    .apartment-types {
+        grid-template-columns: 1fr;
+    }
+    
+    .details-table {
+        font-size: 0.9rem;
+    }
+    
+    .details-table th,
+    .details-table td {
+        padding: 8px;
+    }
 }
