@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const inquiry = document.getElementById('inquiryType').value;
       const otherText = document.getElementById('otherInquiry').value.trim();
 
-      // Required fields and validation (maintaining existing logic)
+      // Required fields and validation
       if (!name || !phone || !address) {
         displayMessage('성함, 연락처, 주소는 반드시 입력해야 합니다.');
         return;
@@ -198,22 +198,22 @@ window.addEventListener('DOMContentLoaded', () => {
         const response = await fetch(APPS_SCRIPT_WEB_APP_URL, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json' // Send data in JSON format
+            'Content-Type': 'application/json'
           },
-          body: JSON.stringify(formData) // Convert data object to JSON string
+          body: JSON.stringify(formData)
         });
         console.log("Fetch request sent to Apps Script."); // Debugging
 
-        const result = await response.json(); // Parse Apps Script response (JSON)
+        const result = await response.json();
         console.log("Response from Apps Script:", result); // Debugging
 
-        if (response.ok && result.success) { // If server response is successful
+        if (response.ok && result.success) {
           displayMessage('정상적으로 등록되었습니다! 담당자가 곧 연락드릴 예정입니다.');
           inquiryForm.reset();
           document.getElementById('otherInquiry').value = '';
-          updateButtonState(); // Update button state after form reset
+          updateButtonState();
           console.log("Form submission successful."); // Debugging
-        } else { // If server response failed
+        } else {
           displayMessage(`상담 예약 실패: ${result.message || '알 수 없는 오류가 발생했습니다.'}`);
           console.error("Form submission failed:", result); // Debugging
         }
@@ -221,7 +221,7 @@ window.addEventListener('DOMContentLoaded', () => {
         console.error('Error submitting form:', error); // Debugging
         displayMessage('네트워크 오류가 발생했습니다. 다시 시도해주세요.');
       } finally {
-        submitBtn.classList.remove('btn-disabled'); // Re-enable button after completion
+        submitBtn.classList.remove('btn-disabled');
         submitBtn.disabled = false;
         submitBtn.textContent = '상담 예약 등록';
         console.log("Submit button re-enabled, text reset."); // Debugging
@@ -470,37 +470,34 @@ window.addEventListener('DOMContentLoaded', () => {
 
       // Ensure it starts with '010'
       if (!value.startsWith('010')) {
-        value = '010' + value; // Prepend '010' if not present
+        value = '010' + value;
       }
       if (value.length > 3 && value.substring(0,3) !== '010') {
          value = '010' + value.substring(3);
       }
 
-
       let formattedValue = '';
-      if (value.length < 4) { // Only '010'
+      if (value.length < 4) {
         formattedValue = value;
-      } else if (value.length >= 4 && value.length <= 7) { // '010-XXXX'
+      } else if (value.length >= 4 && value.length <= 7) {
         formattedValue = value.substring(0, 3) + '-' + value.substring(3);
-      } else if (value.length > 7) { // '010-XXXX-XXXX'
+      } else if (value.length > 7) {
         formattedValue = value.substring(0, 3) + '-' + value.substring(3, 7) + '-' + value.substring(7, 11);
       }
 
       this.value = formattedValue;
 
-      // Auto-focus to the next input field if 010-XXXX-XXXX is complete (11 characters for 010-XXXX-XXXX)
       if (value.length === 11 && reserveTypeSelect) {
         reserveTypeSelect.focus();
       }
-      updateReserveButtonState(); // Update button state on input
+      updateReserveButtonState();
     });
 
-    // Handle blur: if only "010-" is left, clear it
     reservePhoneInput.addEventListener('blur', function() {
       if (this.value === '010-') {
         this.value = '';
       }
-      updateReserveButtonState(); // Update button state on blur
+      updateReserveButtonState();
     });
   }
 
@@ -514,19 +511,18 @@ window.addEventListener('DOMContentLoaded', () => {
       reserveTypeSelect.addEventListener('change', updateReserveButtonState);
     }
 
-    updateReserveButtonState(); // Set initial state on load
+    updateReserveButtonState();
 
     reserveIconBtn.onclick = () => {
       reservePopup.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
-      updateReserveButtonState(); // Update state when popup opens
+      document.body.style.overflow = 'hidden';
+      updateReserveButtonState();
     };
     closePopupBtn.onclick = () => {
       reservePopup.style.display = 'none';
-      document.body.style.overflow = ''; // Allow scrolling when popup is closed
+      document.body.style.overflow = '';
     };
 
-    // Reservation form submission (requires AJAX for server submission in a real application)
     document.getElementById('reserveForm').onsubmit = function(e) {
       e.preventDefault();
 
@@ -543,7 +539,7 @@ window.addEventListener('DOMContentLoaded', () => {
         displayMessage('연락처를 입력해주세요.');
         return;
       }
-      const reservePhoneRegex = /^010-\d{4}-\d{4}$/; // Specific regex for 010-XXXX-XXXX
+      const reservePhoneRegex = /^010-\d{4}-\d{4}$/;
       if (!reservePhoneRegex.test(reservePhone)) {
         displayMessage('올바른 연락처 형식을 입력해주세요. (예: 010-1234-5678)');
         return;
@@ -553,7 +549,6 @@ window.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Here you would typically send the data to a server
       console.log('Reservation Data:', {
         name: reserveName,
         phone: reservePhone,
@@ -561,45 +556,15 @@ window.addEventListener('DOMContentLoaded', () => {
         message: reserveMessage
       });
 
-      displayMessage('예약 신청이 완료되었습니다!\n빠른 시간 내 연락드릴게요.'); // Use custom message box instead of alert
+      displayMessage('예약 신청이 완료되었습니다!\n빠른 시간 내 연락드릴게요.');
       reservePopup.style.display = 'none';
       document.body.style.overflow = '';
       this.reset();
-      updateReserveButtonState(); // Reset button state after form submission
+      updateReserveButtonState();
     };
   } else {
     console.log("Reservation icon, popup, or close button not found. Skipping reservation popup logic.");
   }
-
-  // Battery API for animation control (from business.html)
-  if ('getBattery' in navigator) {
-      navigator.getBattery().then(function(battery) {
-          function updateAnimationState() {
-              // Select the business table header in the main page
-              const businessTableHeader = document.querySelector('.business-table-bg .header');
-              if (businessTableHeader) {
-                  if (battery.level < 0.2 || !battery.charging) {
-                      document.documentElement.style.setProperty('--animation-play-state', 'paused');
-                  } else {
-                      document.documentElement.style.setProperty('--animation-play-state', 'running');
-                  }
-              }
-          }
-          battery.addEventListener('chargingchange', updateAnimationState);
-          battery.addEventListener('levelchange', updateAnimationState);
-          updateAnimationState(); // Initial call
-      });
-  }
-
-  // Keyboard accessibility improvements (from business.html)
-  document.addEventListener('keydown', function(e) {
-      if (e.key === 'Tab') {
-          document.body.classList.add('keyboard-navigation');
-      }
-  });
-  document.addEventListener('mousedown', function() {
-      document.body.classList.remove('keyboard-navigation');
-  });
 
   // Background image blur fade-out logic
   const backgroundImage = document.querySelector('.intro-image-section .background-image-blur');
@@ -609,7 +574,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }, 5000); // 5초 후 blur-out 클래스 추가
   }
 
-  // location.js에서 가져온 스크롤 애니메이션 (cards, premium-section)
+  // Scroll animation for cards and premium section
   const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -624,7 +589,7 @@ window.addEventListener('DOMContentLoaded', () => {
       });
   }, observerOptions);
 
-  // 애니메이션 대상 요소들 관찰
+  // Observe animated elements
   const animatedElements = document.querySelectorAll('#locationContentWrapper .card, #locationContentWrapper .premium-section');
   animatedElements.forEach(el => {
       el.style.opacity = '0';
