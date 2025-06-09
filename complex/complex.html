@@ -3,164 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>평택진위쌍용스마트어반</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> <!-- 외부 CSS 파일 연결 -->
+    <title>평택진위쌍용스마트어반 단지안내</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-item {
+            background: linear-gradient(135deg, #f8f9ff, #e8ebff);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .info-item h3 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .info-item p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .apartment-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .apartment-card {
+            background: linear-gradient(135deg, #fff, #f8f9ff);
+            border: 2px solid #e0e7ff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .apartment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+        
+        .apartment-card h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .apartment-card .area {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 5px;
+        }
+        
+        .apartment-card .count {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .details-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .details-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+        
+        .details-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .apartment-types {
+                grid-template-columns: 1fr;
+            }
+            
+            .details-table {
+                font-size: 0.9rem;
+            }
+            
+            .details-table th,
+            .details-table td {
+                padding: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-    <div class="logo">
-      <a href="https://xn--vk1bl3rxogh2b96d75ueibs8g.shop/" style="display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 1.2em; font-weight: bold;">
-        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/logo1.webp?raw=true" alt="쌍용 로고" style="height: 28px; width: auto; vertical-align: middle;">
-        쌍용 스마트어반
-      </a>
-    </div>
-
-        <button class="hamburger-menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navigation-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav class="nav-menu">
-            <ul id="navigation-menu">
-                <li><a href="/business/business.html">사업안내</a></li>
-                <li><a href="/location/location.html">입지안내</a></li>
-                <li><a href="/complex/complex.html">단지안내</a></li>
-                <li><a href="/units/unit.html">세대안내</a></li>
-                <li><a href="tel:1688-5925">1688-5925</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- 비디오 팝업 관련 요소는 삭제됨 -->
-
-    <section class="intro-image-section">
-        <canvas id="sparkle-canvas"></canvas>
-        <!-- 기존 배경 이미지 -->
-        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/birdseyeview-optimized.webp?raw=true" alt="쌍용 스마트어반 배경" class="background-image-main">
-        <!-- background-image-bottom은 이제 별도의 섹션으로 이동됨 -->
-
-        <div class="business-table-bg">
-            <div class="header" role="banner">
-                <h1 class="sr-only">사업안내 페이지</h1>
-                <h2>사업안내</h2>
-                <p class="subtitle">프로젝트 개요 및 상세 정보</p>
-            </div>
-            <main class="content" role="main">
-                <div class="info-grid">
-                    <div class="info-card" tabindex="0" aria-labelledby="location-info">
-                        <h3 id="location-info" class="sr-only">위치 및 면적 정보</h3>
-                        <div class="info-item">
-                            <div class="info-label">위치</div>
-                            <div class="info-value">
-                                <span class="location-highlight">경기도 평택시 진위면</span><br>
-                                가곡리 235-14번지 일원
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">대지면적</div>
-                            <div class="info-value">
-                                <span class="highlight">67,404㎡</span>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">연면적</div>
-                            <div class="info-value">187,433.21㎡</div>
-                        </div>
-                    </div>
-                    <div class="info-card" tabindex="0" aria-labelledby="building-info">
-                        <h3 id="building-info" class="sr-only">건물 및 주차 정보</h3>
-                        <div class="info-item">
-                            <div class="info-label">세대수</div>
-                            <div class="info-value">
-                                <span class="highlight">1,228세대</span>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">주차</div>
-                            <div class="info-value">1,601대</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">건폐율</div>
-                            <div class="info-value">22.48%</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">용적률</div>
-                            <div class="info-value">187.63%</div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </section>
-
-    <section class="intro">
-        <h2>프리미엄 라이프의 시작</h2>
-        <p>
-            경기도 평택시 진위면에 위치한 쌍용 스마트어반은 교통, 교육, 생활 인프라를 두루 갖춘 프리미엄 주거단지입니다.<br>
-            총 1,228세대, 4Bay 구조와 혁신적인 평면 설계, 풍부한 커뮤니티 시설까지.<br>
-            당신의 삶을 더욱 가치 있게 만들어줄 새로운 시작을 지금 만나보세요.
-        </p>
-    </section>
-
-    <!-- 새로운 위치 지도 이미지 섹션 -->
-    <section class="location-map-section">
-        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/%EA%B0%80%EA%B3%A12%EC%A7%80%EA%B5%AC%20%EC%9C%84%EC%B9%98.webp" alt="가곡2지구 위치 지도" class="location-map-image">
-    </section>
-
     <div class="container">
-        <section class="form-section" id="consultation-booking">
-            <h3 class="highlight-title">상담 예약</h3>
-            <form id="inquiryForm">
-                <div>
-                    <label for="userName">성함<span class="required-text">(필수 입력)</span></label>
-                    <input type="text" id="userName" placeholder="성함을 입력하세요">
+        <h1>평택진위쌍용스마트어반 단지안내</h1>
+        
+        <div class="section">
+            <h2>사업 개요</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>사업위치</h3>
+                    <p>경기도 평택시 진위면 가곡리 235-14번지 일원</p>
                 </div>
-                <div>
-                    <label for="userPhone">연락처<span class="required-text">(필수 입력)</span></label>
-                    <input type="text" id="userPhone" placeholder="연락처를 입력하세요 (예: 010-1234-5678)" maxlength="13">
+                <div class="info-item">
+                    <h3>용도지구</h3>
+                    <p>일반주거지역</p>
                 </div>
-                <div>
-                    <label for="userAddress">주소<span class="required-text">(필수 입력)</span></label>
-                    <input type="text" id="userAddress" placeholder="주소를 입력하세요">
+                <div class="info-item">
+                    <h3>대지면적</h3>
+                    <p><span class="highlight">67,404.00㎡</span> (20,389.62평)</p>
                 </div>
-                <div>
-                    <label for="inquiryType">문의유형</label>
-                    <select id="inquiryType">
-                        <option value="">문의유형 선택</option>
-                        <option value="상담예약">상담예약</option>
-                        <option value="방문예약">방문예션</option>
-                        <option value="기타">기타</option>
-                    </select>
+                <div class="info-item">
+                    <h3>건축면적</h3>
+                    <p><span class="highlight">15,155.81㎡</span> (4,584.61평)</p>
                 </div>
-                <div>
-                    <label for="otherInquiry">기타 문의 내용</label>
-                    <textarea id="otherInquiry" placeholder="기타 문의사항이 있다면 입력해주세요" rows="4"></textarea>
+                <div class="info-item">
+                    <h3>연면적</h3>
+                    <p><span class="highlight">187,433.21㎡</span> (56,698.29평)</p>
                 </div>
-                <div>
-                    <label for="agreeCheckbox">
-                        <input type="checkbox" id="agreeCheckbox"> 개인정보 수집 및 이용에 동의합니다.
-                    </label>
+                <div class="info-item">
+                    <h3>건폐율/용적률</h3>
+                    <p>건폐율: 22.48% (법정 60%)<br>용적률: 187.63% (법정 200%)</p>
                 </div>
-                <div class="privacy-text">
-                    ※ 수집된 개인정보는 분양상담 및 향후 관련 정보 안내 목적으로만 활용되며,<br>
-                    이용자의 요청 시 언제든지 삭제 요청이 가능합니다.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>건축 규모</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>구조</h3>
+                    <p>지하 2층, 지상 29층</p>
                 </div>
-                <button type="submit" id="submitBtn">상담 예약 등록</button>
-            </form>
-        </section>
+                <div class="info-item">
+                    <h3>동수</h3>
+                    <p>아파트 <span class="highlight">14개동</span></p>
+                </div>
+                <div class="info-item">
+                    <h3>총 세대수</h3>
+                    <p><span class="highlight">1,228세대</span></p>
+                </div>
+                <div class="info-item">
+                    <h3>주차시설</h3>
+                    <p>총 1,601대 (지하주차 100%)<br>법정 주차율 130%</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>주택형별 공급 현황</h2>
+            <div class="apartment-types">
+                <div class="apartment-card">
+                    <h4>64㎡형 (A,B,C타입)</h4>
+                    <div class="area">19.47~19.51평</div>
+                    <div class="count">총 368세대 (29.97%)</div>
+                </div>
+                <div class="apartment-card">
+                    <h4>77㎡형 (A,B,C타입)</h4>
+                    <div class="area">23.48~23.58평</div>
+                    <div class="count">총 72세대 (5.86%)</div>
+                </div>
+                <div class="apartment-card">
+                    <h4>84㎡형 (A,B,C,D타입)</h4>
+                    <div class="area">25.68~25.69평</div>
+                    <div class="count">총 788세대 (64.17%)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>상세 면적 정보</h2>
+            <table class="details-table">
+                <thead>
+                    <tr>
+                        <th>주택형</th>
+                        <th>세대수</th>
+                        <th>전용면적</th>
+                        <th>공급면적</th>
+                        <th>세대비율</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>64A형</td>
+                        <td>184</td>
+                        <td>64.37㎡ (19.47평)</td>
+                        <td>83.69㎡ (25.31평)</td>
+                        <td>14.98%</td>
+                    </tr>
+                    <tr>
+                        <td>64B형</td>
+                        <td>92</td>
+                        <td>64.43㎡ (19.49평)</td>
+                        <td>84.50㎡ (25.56평)</td>
+                        <td>7.49%</td>
+                    </tr>
+                    <tr>
+                        <td>64C형</td>
+                        <td>92</td>
+                        <td>64.52㎡ (19.51평)</td>
+                        <td>84.88㎡ (25.67평)</td>
+                        <td>7.49%</td>
+                    </tr>
+                    <tr>
+                        <td>77A형</td>
+                        <td>36</td>
+                        <td>77.80㎡ (23.53평)</td>
+                        <td>100.19㎡ (30.31평)</td>
+                        <td>2.93%</td>
+                    </tr>
+                    <tr>
+                        <td>77B형</td>
+                        <td>18</td>
+                        <td>77.62㎡ (23.48평)</td>
+                        <td>101.63㎡ (30.74평)</td>
+                        <td>1.47%</td>
+                    </tr>
+                    <tr>
+                        <td>77C형</td>
+                        <td>18</td>
+                        <td>77.94㎡ (23.58평)</td>
+                        <td>101.64㎡ (30.75평)</td>
+                        <td>1.47%</td>
+                    </tr>
+                    <tr>
+                        <td>84A형</td>
+                        <td>501</td>
+                        <td>84.88㎡ (25.68평)</td>
+                        <td>109.49㎡ (33.12평)</td>
+                        <td>40.80%</td>
+                    </tr>
+                    <tr>
+                        <td>84B형</td>
+                        <td>112</td>
+                        <td>84.92㎡ (25.69평)</td>
+                        <td>111.11㎡ (33.61평)</td>
+                        <td>9.12%</td>
+                    </tr>
+                    <tr>
+                        <td>84C형</td>
+                        <td>112</td>
+                        <td>84.93㎡ (25.69평)</td>
+                        <td>110.50㎡ (33.43평)</td>
+                        <td>9.12%</td>
+                    </tr>
+                    <tr>
+                        <td>84D형</td>
+                        <td>63</td>
+                        <td>84.92㎡ (25.69평)</td>
+                        <td>111.36㎡ (33.69평)</td>
+                        <td>5.13%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>단지 특징</h2>
+            <ul class="feature-list">
+                <li>전세형 민간임대 아파트</li>
+                <li>청약 없는 회원제 방식</li>
+                <li>4BAY 맞통풍 구조의 혁신평면</li>
+                <li>안방 드레스룸 및 현관 워크인 장 구성</li>
+                <li>주방 페트리(팬트리) 공간 구성</li>
+                <li>지하 100% 주차시설 (법정 주차율 130%)</li>
+                <li>2면 개방형 타워 구조</li>
+                <li>세대구분형 1.5룸 혁신평면 (84D형)</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>입지 정보</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>교통 접근성</h3>
+                    <p>• SRT 평택 지제역 인근<br>
+                    • 평택 동부고속화도로<br>
+                    • 남사 진위 IC<br>
+                    • 동탄 트램 1, 2호선</p>
+                </div>
+                <div class="info-item">
+                    <h3>교육 환경</h3>
+                    <p>• 사업지 인근 학군 상위 86% 수준<br>
+                    • 1.5km 이내 진위초, 진위중, 진위고 위치</p>
+                </div>
+                <div class="info-item">
+                    <h3>산업 단지</h3>
+                    <p>• LG전자 및 삼성전자 협력업체<br>
+                    • 첨단기술 산업 클러스터<br>
+                    • 용인 반도체 클러스터 직선거리 6km</p>
+                </div>
+                <div class="info-item">
+                    <h3>개발 계획</h3>
+                    <p>• 평택시 2035 도시기본계획<br>
+                    • 인구 120만 계획<br>
+                    • 도시개발사업 22개 추진</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- 하단 고정 배너 -->
-    <div id="bottomBanner" class="bottom-fixed-banner">
-        <p>지금 바로 상담 예약하고 특별 혜택 받으세요!</p>
-        <button class="close-bottom-banner" aria-label="하단 배너 닫기">✖</button>
-    </div>
-
-    <footer style="background-color: #e0e0e0; padding: 20px; text-align: center; margin-top: 60px;">
-        <img src="https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/logo.webp?raw=true" alt="쌍용 스마트어반 로고" style="max-width: 180px; height: auto;">
-    </footer>
-
-    <script src="script.js"></script> <!-- 외부 JavaScript 파일 연결 -->
 </body>
 </html>
