@@ -311,7 +311,7 @@ header {
 }
 .intro-image-section .overlay-text {
   position: absolute;
-  top: 5%;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
   color: white;
@@ -601,7 +601,7 @@ header {
         top: 60px; /* Below header */
         left: 0;
         right: 0; /* Equivalent to width: 100%; */
-        background-color: #004d40; /* Same as header background */
+        background-color: #004d40;
         padding: 0;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         z-index: 999; /* Above other content */
@@ -924,7 +924,7 @@ footer {
 
 /* location.css 에서 가져온 스타일 시작 */
 #locationContentWrapper {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 입지안내 섹션의 배경 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 입지안내 섹션의 배경 컬러 다시 추가 */
   padding-top: 40px; /* 상단 여백 추가 */
 }
 

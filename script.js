@@ -133,16 +133,18 @@ window.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submitBtn');
 
   // Apps Script URL
-const PROXY_URL = 'http://localhost:3000/send-inquiry';
+  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxXIk69N_Qtbgw_HkXZAJDO1cesyupl6mz6V4jVs6IPhP-kwbh09nq9kNBoushrPbwtg/exec';
 
-fetch(PROXY_URL, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(formData)
-})
-.then(res => res.json())
-.then(console.log);
+  console.log('Apps Script Web App URL:', APPS_SCRIPT_WEB_APP_URL); // Verify URL is loaded correctly
 
+  if (inquiryForm && agreeCheckbox && submitBtn) {
+    console.log("All inquiry form elements found. Initializing form submission logic."); // Debugging
+    updateButtonState(); // Set initial button state on page load
+    agreeCheckbox.addEventListener('change', updateButtonState); // Update button state on checkbox change
+
+    inquiryForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      console.log("Form submission initiated."); // Debugging
 
       const name = document.getElementById('userName').value.trim();
       const phone = document.getElementById('userPhone').value.trim();
