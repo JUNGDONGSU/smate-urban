@@ -133,7 +133,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submitBtn');
 
   // Apps Script URL
-  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxXIk69N_Qtbgw_HkXZAJDO1cesyupl6mz6V4jVs6IPhP-kwbh09nq9kNBoushrPbwtg/exec';
+  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzJ1mqU97l-y-qgCUio0EsnOVSNZBEJEBsBt2b3cSYCM3ZrIglT1_wAl_eEc2vGxgYL/exec';
 
   console.log('Apps Script Web App URL:', APPS_SCRIPT_WEB_APP_URL); // Verify URL is loaded correctly
 
