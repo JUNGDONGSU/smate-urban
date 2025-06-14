@@ -427,144 +427,17 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log("Sparkle canvas not found. Skipping canvas animation."); // Debugging
   }
 
-  // Reservation popup logic (for headset icon click)
+  // Reservation icon button logic: scroll to consultation booking form
   const reserveIconBtn = document.getElementById('reserveIconBtn');
-  const reservePopup = document.getElementById('reservePopup');
-  const closePopupBtn = document.getElementById('closePopupBtn');
-
-  // For the reservation popup phone input
-  const reserveNameInput = document.getElementById('reserveName');
-  const reservePhoneInput = document.getElementById('reservePhone');
-  const reserveTypeSelect = document.getElementById('reserveType');
-  const reserveSubmitBtn = document.getElementById('reserveSubmitBtn');
-
-
-  // Function to update the state of the reserve submit button
-  function updateReserveButtonState() {
-    const isNameFilled = reserveNameInput && reserveNameInput.value.trim() !== '';
-    const isPhoneFilledAndValid = reservePhoneInput && /^010-\d{4}-\d{4}$/.test(reservePhoneInput.value.trim());
-    const isTypeSelected = reserveTypeSelect && reserveTypeSelect.value !== '';
-
-    if (reserveSubmitBtn) {
-      if (isNameFilled && isPhoneFilledAndValid && isTypeSelected) {
-        reserveSubmitBtn.classList.remove('btn-disabled');
-        reserveSubmitBtn.disabled = false;
-      } else {
-        reserveSubmitBtn.classList.add('btn-disabled');
-        reserveSubmitBtn.disabled = true;
+  if (reserveIconBtn) {
+    reserveIconBtn.addEventListener('click', () => {
+      const consultationForm = document.getElementById('consultation-booking');
+      if (consultationForm) {
+        consultationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }
-  }
-
-
-  if (reservePhoneInput) {
-    // Initial display of "010-" when the field is empty on focus
-    reservePhoneInput.addEventListener('focus', function() {
-      if (this.value === '') {
-        this.value = '010-';
-      }
-    });
-
-    reservePhoneInput.addEventListener('input', function() {
-      let value = this.value.replace(/[^0-9]/g, ''); // Remove non-digits
-
-      // Ensure it starts with '010'
-      if (!value.startsWith('010')) {
-        value = '010' + value;
-      }
-      if (value.length > 3 && value.substring(0,3) !== '010') {
-         value = '010' + value.substring(3);
-      }
-
-      let formattedValue = '';
-      if (value.length < 4) {
-        formattedValue = value;
-      } else if (value.length >= 4 && value.length <= 7) {
-        formattedValue = value.substring(0, 3) + '-' + value.substring(3);
-      } else if (value.length > 7) {
-        formattedValue = value.substring(0, 3) + '-' + value.substring(3, 7) + '-' + value.substring(7, 11);
-      }
-
-      this.value = formattedValue;
-
-      if (value.length === 11 && reserveTypeSelect) {
-        reserveTypeSelect.focus();
-      }
-      updateReserveButtonState();
-    });
-
-    reservePhoneInput.addEventListener('blur', function() {
-      if (this.value === '010-') {
-        this.value = '';
-      }
-      updateReserveButtonState();
     });
   }
 
-
-  if (reserveIconBtn && reservePopup && closePopupBtn) {
-    // Attach event listeners for updating button state
-    if (reserveNameInput) {
-      reserveNameInput.addEventListener('input', updateReserveButtonState);
-    }
-    if (reserveTypeSelect) {
-      reserveTypeSelect.addEventListener('change', updateReserveButtonState);
-    }
-
-    updateReserveButtonState();
-
-    reserveIconBtn.onclick = () => {
-      reservePopup.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-      updateReserveButtonState();
-    };
-    closePopupBtn.onclick = () => {
-      reservePopup.style.display = 'none';
-      document.body.style.overflow = '';
-    };
-
-    document.getElementById('reserveForm').onsubmit = function(e) {
-      e.preventDefault();
-
-      const reserveName = document.querySelector('#reservePopup input[name="name"]').value.trim();
-      const reservePhone = document.querySelector('#reservePopup input[name="phone"]').value.trim();
-      const reserveType = document.querySelector('#reservePopup select[name="type"]').value;
-      const reserveMessage = document.querySelector('#reservePopup textarea[name="message"]').value.trim();
-
-      if (!reserveName) {
-        displayMessage('이름을 입력해주세요.');
-        return;
-      }
-      if (!reservePhone) {
-        displayMessage('연락처를 입력해주세요.');
-        return;
-      }
-      const reservePhoneRegex = /^010-\d{4}-\d{4}$/;
-      if (!reservePhoneRegex.test(reservePhone)) {
-        displayMessage('올바른 연락처 형식을 입력해주세요. (예: 010-1234-5678)');
-        return;
-      }
-      if (reserveType === '') {
-        displayMessage('예약 구분을 선택해주세요.');
-        return;
-      }
-
-      console.log('Reservation Data:', {
-        name: reserveName,
-        phone: reservePhone,
-        type: reserveType,
-        message: reserveMessage
-      });
-
-      displayMessage('예약 신청이 완료되었습니다!\n빠른 시간 내 연락드릴게요.');
-      reservePopup.style.display = 'none';
-      document.body.style.overflow = '';
-      this.reset();
-      updateReserveButtonState();
-    };
-  } else {
-    console.log("Reservation icon, popup, or close button not found. Skipping reservation popup logic.");
-  }
 
   // Background image blur fade-out logic
   const backgroundImage = document.querySelector('.intro-image-section .background-image-blur');
@@ -597,4 +470,54 @@ window.addEventListener('DOMContentLoaded', () => {
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(el);
   });
+
+  // Slider functionality for features and apartment types
+  function initializeSlider(containerId, imageClass, prevBtnId, nextBtnId) {
+      const sliderContainer = document.getElementById(containerId);
+      if (!sliderContainer) {
+          console.log(`Slider container ${containerId} not found.`);
+          return;
+      }
+
+      const images = sliderContainer.querySelectorAll(`.${imageClass}`);
+      const prevBtn = sliderContainer.querySelector(prevBtnId);
+      const nextBtn = sliderContainer.querySelector(nextBtnId);
+      let currentIndex = 0;
+
+      function showImage(index) {
+          images.forEach((img, i) => {
+              if (i === index) {
+                  img.classList.add('active');
+              } else {
+                  img.classList.remove('active');
+              }
+          });
+      }
+
+      if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+              currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+              showImage(currentIndex);
+          });
+      } else {
+          console.log(`Previous button ${prevBtnId} not found for slider ${containerId}.`);
+      }
+
+      if (nextBtn) {
+          nextIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+          nextBtn.addEventListener('click', () => {
+              currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+              showImage(currentIndex);
+          });
+      } else {
+          console.log(`Next button ${nextBtnId} not found for slider ${containerId}.`);
+      }
+
+      // Initialize first image
+      showImage(currentIndex);
+  }
+
+  // Initialize both sliders
+  initializeSlider('features-slider', 'slider-image', '.slider-prev', '.slider-next');
+  initializeSlider('apartment-type-slider', 'apartment-slider-image', '#apartment-prev-btn', '#apartment-next-btn');
 });
