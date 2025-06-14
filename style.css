@@ -1105,7 +1105,7 @@ strong {
 
 /* "방문상담 예약하기" 텍스트 스타일 */
 #reserveIconBtn .reserve-text {
-    font-size: 1.1em; /* 텍스트 크기 */
+    font-size: 1.5em; /* 텍스트 크기 */
     font-weight: 600;
     color: #333; /* 텍스트 색상을 배경과 어울리게 변경 */
     margin-top: 8px; /* 박스와 텍스트 사이 간격 */
