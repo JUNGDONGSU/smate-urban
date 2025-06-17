@@ -27,21 +27,6 @@ function displayMessage(message) {
   console.log(`Displaying message: ${message}`); // Debugging
 }
 
-// Video Popup functions
-function openVideoPopup() {
-    document.getElementById("videoPopup").style.display = "flex";
-    const video = document.getElementById("popupVideo");
-    video.play().catch(error => {
-        console.log("비디오 자동 재생 실패 (사용자 상호작용 필요):", error);
-    });
-}
-
-function closeVideoPopup() {
-    document.getElementById("videoPopup").style.display = "none";
-    document.getElementById("popupVideo").pause();
-    document.getElementById("popupVideo").currentTime = 0;
-}
-
 
 // Execute when DOM content is fully loaded
 window.addEventListener('DOMContentLoaded', () => {
@@ -100,7 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
         formattedNumber = phoneNumber;
       } else if (phoneNumber.length < 7) { // e.g., 010-123
         formattedNumber = phoneNumber.substring(0, 3) + '-' + phoneNumber.substring(3);
-      } else if (phoneNumber.length < 11) { // e.g., 010-123-4567
+      } else if (phoneNumber.length < 11) { // e.g., 010-1234-5678
         formattedNumber = phoneNumber.substring(0, 3) + '-' + phoneNumber.substring(3, 7) + '-' + phoneNumber.substring(7);
       } else { // e.g., 010-1234-5678 (max length)
         formattedNumber = phoneNumber.substring(0, 3) + '-' + phoneNumber.substring(3, 7) + '-' + phoneNumber.substring(7, 11);
@@ -133,7 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submitBtn');
 
   // Apps Script URL
-  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwgPTjppMFoz3nb9ApxvxADb4cC1i-zhPxjsfRxP-s/dev';
+  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx1OemkhMdjo7sXjOTt4xTRt8F6xuO4WgS-TfmsvBFbRu0_Bc7qCw7lvqQSIYeUEdfL/exec'; // Updated URL
 
   console.log('Apps Script Web App URL:', APPS_SCRIPT_WEB_APP_URL); // Verify URL is loaded correctly
 
@@ -178,13 +163,13 @@ window.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Create data object for Apps Script
+      // Create data object for Apps Script - CHANGED KEYS TO MATCH APPS SCRIPT
       const formData = {
-        userName: name,
-        userPhone: phone,
-        userAddress: address,
-        inquiryType: inquiry,
-        otherInquiry: otherText
+        name: name,         // 'userName' -> 'name'
+        phone: phone,       // 'userPhone' -> 'phone'
+        address: address,   // 'userAddress' -> 'address'
+        visitType: inquiry, // 'inquiryType' -> 'visitType'
+        message: otherText  // 'otherInquiry' -> 'message'
       };
       console.log("Form data collected:", formData); // Debugging
 
@@ -430,94 +415,147 @@ window.addEventListener('DOMContentLoaded', () => {
   // Reservation icon button logic: scroll to consultation booking form
   const reserveIconBtn = document.getElementById('reserveIconBtn');
   if (reserveIconBtn) {
-    reserveIconBtn.addEventListener('click', () => {
-      const consultationForm = document.getElementById('consultation-booking');
-      if (consultationForm) {
-        consultationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 기존 상담 예약 폼이 숨겨졌으므로, 이 버튼의 기능도 잠정적으로 비활성화합니다.
+    // 또는 다른 페이지로의 링크로 변경할 수도 있습니다.
+    // 여기서는 클릭 이벤트를 제거하여 아무 동작도 하지 않도록 합니다.
+    // reserveIconBtn.addEventListener('click', () => { ... });
+    reserveIconBtn.style.display = 'none'; // 버튼 자체도 숨김
+  }
+
+
+  // 텍스트 줄 배열 (PC 버전)
+  const linesPC = [
+    '"살기 좋으니까 오르고,',
+    '오르니까 사고 싶은 아파트"'
+  ];
+
+  // 텍스트 줄 배열 (모바일 버전)
+  const linesMobile = [
+    '"살기 좋으니까',
+    '오르고, 오르니까',
+    '사고 싶은 아파트"'
+  ];
+
+  // 각 글자별로 앞(컬러)+뒤(백드롭) 구성
+  function createAnimatedText(lines) {
+    let html = '';
+    lines.forEach((line, idx) => {
+      for (let ch of line) {
+        if (ch === ' ') {
+          html += `<span class="char-wrap">&nbsp;</span>`;
+        } else {
+          html += `
+            <span class="char-wrap">
+              <span class="char-back">${ch}</span>
+              <span class="char">${ch}</span>
+            </span>
+          `;
+        }
       }
+      if (idx < lines.length - 1) html += '<br>';
+    });
+    return html;
+  }
+
+  // PC 버전 타이틀 생성 및 애니메이션 적용
+  const animatedTitlePC = document.getElementById('animatedTitlePC');
+  if (animatedTitlePC) {
+    animatedTitlePC.innerHTML = createAnimatedText(linesPC);
+    const charsPC = animatedTitlePC.querySelectorAll('.char');
+    charsPC.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add('reveal');
+      }, i * 120);
     });
   }
 
-
-  // Background image blur fade-out logic
-  const backgroundImage = document.querySelector('.intro-image-section .background-image-blur');
-  if (backgroundImage) {
+  // 모바일 버전 타이틀 생성 및 애니메이션 적용
+  const animatedTitleMobile = document.getElementById('animatedTitleMobile');
+  if (animatedTitleMobile) {
+    animatedTitleMobile.innerHTML = createAnimatedText(linesMobile);
+    const charsMobile = animatedTitleMobile.querySelectorAll('.char');
+    charsMobile.forEach((el, i) => {
       setTimeout(() => {
-          backgroundImage.classList.add('background-image-no-blur');
-      }, 5000); // 5초 후 blur-out 클래스 추가
+        el.classList.add('reveal');
+      }, i * 120);
+    });
   }
 
-  // Scroll animation for cards and premium section
-  const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-  };
+  // --- 이미지 슬라이더 기능 추가 ---
+  /**
+   * 이미지 슬라이더를 설정하는 함수
+   * @param {string} sliderId 슬라이더 컨테이너의 ID
+   * @param {string} imageClass 슬라이더 내 이미지들의 클래스 이름
+   */
+  function setupImageSlider(sliderId, imageClass) {
+    const sliderContainer = document.getElementById(sliderId);
+    if (!sliderContainer) {
+      console.warn(`Slider container with ID "${sliderId}" not found.`);
+      return;
+    }
 
-  const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-          }
+    const images = sliderContainer.querySelectorAll(`.${imageClass}`);
+    if (images.length === 0) {
+      console.warn(`No images found with class "${imageClass}" in slider "${sliderId}".`);
+      return;
+    }
+
+    const prevButton = sliderContainer.querySelector('.slider-prev');
+    const nextButton = sliderContainer.querySelector('.slider-next');
+    let currentIndex = 0; // 현재 활성화된 이미지의 인덱스
+
+    /**
+     * 지정된 인덱스의 이미지를 표시하는 함수
+     * @param {number} index 표시할 이미지의 인덱스
+     */
+    function showImage(index) {
+      // 모든 이미지에서 'active' 클래스 제거
+      images.forEach(img => img.classList.remove('active'));
+
+      // 인덱스 유효성 검사 및 조정
+      currentIndex = (index + images.length) % images.length;
+
+      // 현재 이미지에 'active' 클래스 추가하여 표시
+      images[currentIndex].classList.add('active');
+      console.log(`Slider ${sliderId}: Showing image ${currentIndex + 1} of ${images.length}`);
+    }
+
+    // 이전 버튼 클릭 이벤트 리스너
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        showImage(currentIndex - 1);
       });
-  }, observerOptions);
+    }
 
-  // Observe animated elements
-  const animatedElements = document.querySelectorAll('#locationContentWrapper .card, #locationContentWrapper .premium-section');
-  animatedElements.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-  });
+    // 다음 버튼 클릭 이벤트 리스너
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        showImage(currentIndex + 1);
+      });
+    }
 
-  // Slider functionality for features and apartment types
-  function initializeSlider(containerId, imageClass, prevBtnId, nextBtnId) {
-      const sliderContainer = document.getElementById(containerId);
-      if (!sliderContainer) {
-          console.log(`Slider container ${containerId} not found.`);
-          return;
-      }
-
-      const images = sliderContainer.querySelectorAll(`.${imageClass}`);
-      const prevBtn = sliderContainer.querySelector(prevBtnId);
-      const nextBtn = sliderContainer.querySelector(nextBtnId);
-      let currentIndex = 0;
-
-      function showImage(index) {
-          images.forEach((img, i) => {
-              if (i === index) {
-                  img.classList.add('active');
-              } else {
-                  img.classList.remove('active');
-              }
-          });
-      }
-
-      if (prevBtn) {
-          prevBtn.addEventListener('click', () => {
-              currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-              showImage(currentIndex);
-          });
-      } else {
-          console.log(`Previous button ${prevBtnId} not found for slider ${containerId}.`);
-      }
-
-      if (nextBtn) {
-          nextIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-          nextBtn.addEventListener('click', () => {
-              currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-              showImage(currentIndex);
-          });
-      } else {
-          console.log(`Next button ${nextBtnId} not found for slider ${containerId}.`);
-      }
-
-      // Initialize first image
-      showImage(currentIndex);
+    // 초기 이미지 표시
+    showImage(0);
+    console.log(`Image slider "${sliderId}" initialized.`);
   }
 
-  // Initialize both sliders
-  initializeSlider('features-slider', 'slider-image', '.slider-prev', '.slider-next');
-  initializeSlider('apartment-type-slider', 'apartment-slider-image', '#apartment-prev-btn', '#apartment-next-btn');
+  // 3. 유 니 트 (UNIT) 섹션 슬라이더 설정
+  setupImageSlider('apartment-type-slider', 'apartment-slider-image');
+
+  // 4. P R E M I U M 섹션 슬라이더 설정
+  setupImageSlider('features-slider', 'slider-image');
+  // --- 이미지 슬라이더 기능 추가 끝 ---
+
 });
+
+// 페이지 로드 후 서서히 안개 사라지게! (새로운 블러 로직)
+window.onload = function(){
+  setTimeout(()=>{
+    const fogElement = document.getElementById('fog');
+    if (fogElement) {
+      fogElement.classList.add('hide');
+    } else {
+      console.warn("Fog element not found for blur fade-out.");
+    }
+  }, 2000); // 0.6초 뒤에 서서히 걷힌다
+}
