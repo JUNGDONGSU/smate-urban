@@ -29,11 +29,19 @@ header {
   z-index: 1000;
   opacity: 0.9;
 }
-.logo a {
+.logo, .logo a { /* 로고 텍스트 및 링크 스타일 */
   color: #fff;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo img { /* 로고 이미지 스타일 */
+  height: 28px;
+  width: auto;
+  vertical-align: middle;
 }
 /* Navigation menu styles */
 .nav-menu ul {
@@ -123,6 +131,15 @@ header {
   color: #004d40;
   text-align: center;
 }
+
+/* 상담 예약 폰트 사이즈 2배로 키움 */
+#consultation-booking h3 {
+  font-size: 2.2em; /* 기존 크기의 2배로 설정 */
+  margin-bottom: 20px;
+  color: #004d40;
+  text-align: center;
+}
+
 
 /* --- Form Element Styles --- */
 .form-section div {
@@ -215,57 +232,6 @@ header {
 }
 /* --- End of Form Element Styles --- */
 
-/* Video Popup Styles */
-#videoPopup {
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-.popup-bg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.5);
-}
-.popup-box {
-    position: relative;
-    background: #fff;
-    padding: 0;
-    border-radius: 18px;
-    box-shadow: 0 6px 32px rgba(0,0,0,0.15);
-    max-width: 96vw;
-    width: 400px;
-    max-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.close-btn {
-    position: absolute;
-    top: 6px;
-    right: 10px;
-    background: #004d40;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-@media (max-width:500px){
-    .popup-box{ width: 97vw; min-width: 0; max-width: 98vw; }
-}
-
 /* Intro image section with canvas background */
 .intro-image-section {
   position: relative;
@@ -273,51 +239,96 @@ header {
   height: calc(100vh - 60px);
   min-height: 400px;
   overflow: hidden;
+  display: flex; /* Flexbox 추가 */
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
 }
-.intro-image-section img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+
+/* New container for centering logo and title */
+.intro-content-wrapper {
+    text-align: center;
+    z-index: 3;
+    position: relative; /* 자식 요소의 위치 지정을 위한 상대 위치 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 가로 중앙 정렬 */
+    justify-content: space-between; /* 상단/하단 분배 */
+    width: 100%;
+    height: 80%; /* 부모 높이에 맞춤 */
+    padding: 5% 0; /* 상하 여백 추가 */
 }
+
 .intro-image-section .logo-image {
-  position: absolute;
-  top: 58%;
+  position: absolute; /* 로고 이미지는 absolute로 유지하여 정확한 위치 지정 */
+  top: calc(50% + 50px); /* 타이틀 아래로 이동 (50% + 타이틀 높이 절반) */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%); /* 가로 중앙 정렬 */
   width: auto;
-  max-width: 30%;
+  max-width: 30%; /* PC 기본값 */
   height: auto;
-  z-index: 2;
+  z-index: 2; /* 텍스트 위에 오도록 */
   animation: fadeInEntrance 1.5s ease-out forwards, neonPulse 3s infinite alternate ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(0,255,255,0.8));
+  filter: drop-shadow(0 0 10px rgba(0,255,255,0.8)); /* 'drop_shadow'를 'drop-shadow'로 수정 */
 }
-.intro-image-section .overlay-text {
-  position: absolute;
-  top: 6%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
+
+/* main-title (기존 .overlay-text h2 대체) */
+.main-title {
   text-align: center;
-  width: 90%;
-  max-width: 1000px;
-  z-index: 3;
-}
-.intro-image-section .overlay-text h2 {
-  font-size: 4em;
-  font-weight: bold;
-  color: transparent;
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: neonStroke 12s linear infinite;
+  font-family: 'Jua', 'Noto Sans KR', sans-serif;
+  font-size: 3.3rem;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  word-break: keep-all;
   margin: 0;
+  position: relative;
+  z-index: 2; /* 로고와 동일 또는 그 위 */
+  color: #ffe600; /* 텍스트 색상 추가 */
+  text-shadow:
+    -1px -1px 0 #1a57ff,
+    1px 1px 0 #1a57ff,
+    2px 2px 0 #1a57ff,
+    0px 0px 8px #fff,
+    0 4px 16px #aaa;
 }
+.char-wrap {
+  position: relative;
+  display: inline-block;
+}
+.main-title .char-back {
+  color: #222A35;
+  font-size: 1.1em;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-48%, -48%);
+  z-index: 1;
+  opacity: 0.87;
+  pointer-events: none;
+  filter: blur(0.5px);
+  user-select: none;
+}
+.main-title .char {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(60px) scale(1.1); /* 더 위에서 등장 */
+  transition:
+    opacity 0.18s cubic-bezier(.43,2,.45,1),
+    transform 0.48s cubic-bezier(.23,2,.15,.91);
+  color: #ffe600;
+  text-shadow:
+    -1px -1px 0 #1a57ff,
+    1px 1px 0 #1a57ff,
+    2px 2px 0 #1a57ff,
+    0px 0px 8px #fff,
+    0 4px 16px #aaa;
+  position: relative;
+  z-index: 2;
+}
+.main-title .char.reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 /* Sparkle and Shooting Star canvas styles */
 #sparkle-canvas {
   position: absolute;
@@ -329,18 +340,44 @@ header {
   z-index: 1;
   display: block;
 }
-/* Explicit z-index for background image */
-.intro-image-section img:first-of-type {
-    z-index: 0;
+
+/* New styles for background blur */
+.bg-wrap {
+    position: absolute; /* intro-image-section 기준 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* 배경 이미지와 블러가 가장 뒤에 오도록 */
 }
-/* Background Image Blur */
-.intro-image-section .background-image-blur {
-    filter: blur(5px) brightness(0.9);
-    z-index: 0 !important;
-    transition: filter 3s ease-out;
+.main-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute; /* bg-wrap 기준 */
+    left: 0;
+    top: 0;
 }
-.intro-image-section .background-image-no-blur {
-    filter: blur(0) brightness(0.9);
+.fog {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.55); /* 살짝 뿌연 흰색 */
+    backdrop-filter: blur(15px); /* 안개 블러 효과 */
+    opacity: 1; /* 시작할 때 완전 뿌얗게 */
+    transition:
+        opacity 2.5s cubic-bezier(.45,2,.5,1),
+        backdrop-filter 2.5s cubic-bezier(.45,2,.5,1);
+    pointer-events: none;
+    z-index: 2; /* 블러가 배경 이미지 위에 오도록 */
+}
+.fog.hide {
+    opacity: 0; /* 완전 투명하게 */
+    backdrop-filter: blur(0px); /* 블러 사라짐 */
 }
 
 /* Screen Reader Only */
@@ -357,17 +394,25 @@ header {
 }
 
 /* Mobile Responsiveness */
+/* 기본적으로 PC 버전 타이틀을 보여주고 모바일 버전을 숨김 */
+.main-title.mobile-version {
+  display: none;
+}
+
 @media (max-width: 768px) {
     .intro-image-section {
         height: calc(100vh - 60px);
     }
-    .nav-menu > ul {
-        display: none;
-    }
+    /* Hamburger menu should always be visible on mobile */
     .hamburger-menu {
         display: block;
     }
-    .nav-menu.nav-open > ul {
+    /* Hide nav menu on mobile by default */
+    .nav-menu ul {
+        display: none;
+    }
+    /* Show nav menu when active */
+    .nav-menu.nav-open ul {
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -379,23 +424,38 @@ header {
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         z-index: 999;
     }
-    .nav-menu.nav-open > ul li {
+    .nav-menu.nav-open ul li {
         width: 100%;
         text-align: center;
     }
-    .nav-menu.nav-open > ul li a {
+    .nav-menu.nav-open ul li a {
         display: block;
         padding: 15px 20px;
         border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .nav-menu.nav-open > ul li:last-child a {
+    .nav-menu.nav-open ul li:last-child a {
         border-bottom: none;
     }
-    .nav-menu.nav-open > ul li a:hover {
+    .nav-menu.nav-open ul li a:hover {
         background-color: rgba(255,255,255,0.1);
     }
-    .mobile-only-break {
-        display: block;
+    /* 모바일 화면에서 타이틀 폰트 사이즈 조정 */
+    .main-title { 
+        font-size: 1.8rem; /* 모바일에서 적절한 크기로 조정 */
+        letter-spacing: 1px; /* 모바일에서 간격 조정 */
+    }
+    /* 쌍용 스마트어반 로고 모바일 사이즈 2배 키움 */
+    .intro-image-section .logo-image {
+        max-width: 60%; /* 모바일에서 기존 30%에서 2배 확대 */
+        top: calc(50% + 80px); /* 모바일에서 로고 위치 조정 (타이틀이 커지므로 더 아래로) */
+    }
+
+    /* 모바일에서 PC 버전 타이틀 숨기고 모바일 버전 타이틀 보여주기 */
+    .main-title.pc-version {
+      display: none;
+    }
+    .main-title.mobile-version {
+      display: block;
     }
 }
 
@@ -403,13 +463,22 @@ header {
 footer {
   background-color: #e0e0e0;
   padding: 20px;
-  text-align: center;
+  text-align: left; /* Changed to left-align */
   margin-top: 60px;
+  font-size: 0.9em; /* 폰트 크기 조정 */
+  color: #666; /* 텍스트 색상 조정 */
+  line-height: 1.5; /* 줄 간격 조정 */
+}
+
+footer p {
+    margin: 5px 0; /* 단락 간격 조정 */
 }
 
 .footer-logo {
   max-width: 180px;
   height: auto;
+  display: block; /* 블록 레벨 요소로 변경 */
+  margin: 0 auto; /* 좌우 마진을 자동으로 설정하여 중앙 정렬 */
 }
 
 /* Header Logo Specific Styles */
@@ -437,10 +506,6 @@ footer {
 @keyframes neonPulse {
   0% { filter: drop-shadow(0 0 5px rgba(0,255,255,0.5)) drop-shadow(0 0 10px rgba(0,255,255,0.5)); }
   100% { filter: drop-shadow(0 0 20px rgba(0,255,255,1)) drop-shadow(0 0 30px rgba(0,255,255,1)); }
-}
-@keyframes neonStroke {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
 }
 @keyframes lavenderPulse {
   0% {
@@ -651,13 +716,6 @@ strong {
     left: 0;
 }
 
-.floating-circle {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    animation: float 6s ease-in-out infinite;
-}
-
 .floating-circle:nth-child(1) {
     width: 80px;
     height: 80px;
@@ -796,7 +854,7 @@ strong {
 
 /* Wrapper for all individual complex sections */
 .complex-sections-wrapper {
-    max-width: px; /* Further reduced max width for content inside guide */
+    max-width: 100%; /* Further reduced max width for content inside guide */
     margin: 0; /* 마진 폭 0으로 수정 */
     display: grid; /* Use grid for better separation */
     grid-template-columns: 1fr; /* Single column layout for individual sections */
@@ -1004,10 +1062,10 @@ strong {
     height: 0; /* padding-bottom 트릭을 위해 높이를 0으로 설정 */
     padding-bottom: 41.6666%; /* 1200x500 비율 (500/1200 * 100%) */
     overflow: hidden;
-    border-radius: 12px; /* Slightly smaller border radius */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
-    margin: 0 auto 20px auto; /* Reduced margin */
-    background-color: #f0f0f0; /* 이미지가 로드되기 전 배경 */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 20px auto;
+    background-color: #f0f0f0;
 }
 
 .features-slider .slider-image,
@@ -1018,9 +1076,9 @@ strong {
     width: 100%;
     height: 100%;
     object-fit: contain; /* 이미지가 잘리지 않고 컨테이너 안에 들어가도록 */
-    opacity: 0; /* 기본적으로 투명하게 설정 */
-    transition: opacity 1s ease-in-out; /* 부드러운 전환 효과 */
-    background-color: #ffffff; /* 이미지가 빈 공간을 채울 때 흰색 배경 */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: #ffffff;
 }
 
 .features-slider .slider-image.active,
@@ -1035,27 +1093,27 @@ strong {
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
     color: white;
-    padding: 8px 12px; /* Reduced padding */
-    border-radius: 4px; /* Slightly smaller border radius */
+    padding: 8px 12px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 1.5rem; /* Reduced font size */
+    font-size: 1.5rem;
     font-weight: bold;
-    user-select: none; /* 텍스트 선택 방지 */
+    user-select: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     z-index: 10; /* 이미지 위에 오도록 */
 }
 
 .slider-nav:hover {
     background-color: rgba(0, 0, 0, 0.7);
-    transform: translateY(-50%) scale(1.03); /* Slightly less scale on hover */
+    transform: translateY(-50%) scale(1.03);
 }
 
 .slider-prev {
-    left: 10px; /* Reduced position */
+    left: 10px;
 }
 
 .slider-next {
-    right: 10px; /* Reduced position */
+    right: 10px;
 }
 
 /* 상담원 아이콘 버튼 스타일 (전체 버튼 영역) */
@@ -1178,4 +1236,3 @@ strong {
         font-size: 0.9em; /* 모바일에서 텍스트 크기 조정 */
         margin-top: 4px; /* 모바일에서 간격 조정 */
     }
-}
