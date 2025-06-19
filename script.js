@@ -32,13 +32,27 @@ function displayMessage(message) {
 window.addEventListener('DOMContentLoaded', () => {
   console.log("DOMContentLoaded fired."); // Debugging
 
+  // --- Header Scroll Opacity Logic ---
+  const header = document.querySelector('header');
+  if (header) {
+      window.addEventListener('scroll', () => {
+          // 스크롤 위치가 10px 이상이면 'scrolled' 클래스 추가, 아니면 제거
+          if (window.scrollY > 10) {
+              header.classList.add('scrolled');
+          } else {
+              header.classList.remove('scrolled');
+          }
+      });
+  }
+  // --- End of Header Scroll Opacity Logic ---
+
+
   // --- Mobile Navigation (Hamburger Menu) Logic ---
   const hamburgerButton = document.querySelector('.hamburger-menu');
   const navigationMenu = document.querySelector('.nav-menu');
   const navLinks = document.querySelectorAll('.nav-menu ul li a');
 
   if (hamburgerButton && navigationMenu) {
-    console.log("Hamburger menu and navigation menu found."); // Debugging
     hamburgerButton.addEventListener('click', () => {
       navigationMenu.classList.toggle('nav-open'); // Toggle class on <nav> element
       hamburgerButton.classList.toggle('active'); // Toggle class on hamburger button itself (for X shape)
@@ -51,7 +65,6 @@ window.addEventListener('DOMContentLoaded', () => {
       } else {
         hamburgerButton.setAttribute('aria-label', '메뉴 열기');
       }
-      console.log(`Hamburger menu toggled. Nav open: ${isExpanded}`); // Debugging
     });
 
     // Close menu when a link is clicked in mobile navigation
@@ -62,7 +75,6 @@ window.addEventListener('DOMContentLoaded', () => {
           hamburgerButton.classList.remove('active');
           hamburgerButton.setAttribute('aria-expanded', 'false');
           hamburgerButton.setAttribute('aria-label', '메뉴 열기');
-          console.log("Nav link clicked, closing mobile menu."); // Debugging
         }
       });
     });
