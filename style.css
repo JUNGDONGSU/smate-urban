@@ -15,20 +15,40 @@ body {
 }
 /* Header styles */
 header {
-  background-color: #004d40;
+  background: none; /* 배경을 가상 요소로 옮기기 위해 제거 */
   color: #fff;
   height: 60px;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: fixed; /* fixed 속성 유지 */
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  opacity: 0.9;
+  /* 이전에 추가되었던 position: relative; overflow: hidden; 제거 */
 }
+
+/* 헤더 배경을 위한 가상 요소 */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 그라디언트 배경 적용 */
+    z-index: -1; /* 내용을 배경 위로 오게 설정 */
+    opacity: 1; /* 초기 오파시티 1 */
+    transition: opacity 0.3s ease-in-out; /* 오파시티 변경 시 부드러운 전환 효과 추가 */
+}
+
+/* 스크롤 시 헤더 배경의 투명도 조절을 위한 클래스 */
+header.scrolled::before {
+    opacity: 0.5; /* 스크롤 시 배경의 오파시티만 50%로 설정 */
+}
+
 .logo, .logo a { /* 로고 텍스트 및 링크 스타일 */
   color: #fff;
   text-decoration: none;
@@ -275,7 +295,7 @@ header {
 .main-title {
   text-align: center;
   font-family: 'Jua', 'Noto Sans KR', sans-serif;
-  font-size: 3.3rem;
+  font-size: 4.2rem;
   font-weight: 900;
   line-height: 1.2;
   letter-spacing: 2px;
@@ -290,6 +310,7 @@ header {
     2px 2px 0 #1a57ff,
     0px 0px 8px #fff,
     0 4px 16px #aaa;
+  font-family: 'Noto Sans KR', sans-serif; /* 노토산스 고딕체로 변경 */
 }
 .char-wrap {
   position: relative;
@@ -419,7 +440,7 @@ header {
         top: 60px;
         left: 0;
         right: 0;
-        background-color: #004d40;
+        background-color: rgba(0, 77, 64, 0.9); /* 모바일 메뉴 배경도 투명도 적용 가능하도록 rgba로 변경 */
         padding: 0;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         z-index: 999;
@@ -443,6 +464,7 @@ header {
     .main-title { 
         font-size: 1.8rem; /* 모바일에서 적절한 크기로 조정 */
         letter-spacing: 1px; /* 모바일에서 간격 조정 */
+        font-family: 'Noto Sans KR', sans-serif; /* 노토산스 고딕체로 변경 */
     }
     /* 쌍용 스마트어반 로고 모바일 사이즈 2배 키움 */
     .intro-image-section .logo-image {
@@ -1236,3 +1258,5 @@ strong {
         font-size: 0.9em; /* 모바일에서 텍스트 크기 조정 */
         margin-top: 4px; /* 모바일에서 간격 조정 */
     }
+
+}
