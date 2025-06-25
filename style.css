@@ -910,9 +910,10 @@ strong {
 /* Image container within each individual section (now a div for aspect ratio control) */
 .complex-section-image {
     width: 100%;
-    max-width: 100%; /* 부모 너비에 맞춤 */
+    /* 이미지 높이를 늘리고 싶다면 padding-bottom 값을 늘리세요. */
+    /* 현재 1200x500 (41.6666%) 기준. 더 높게 보려면 예를 들어 56.25% (16:9)로 변경 */
+    padding-bottom: 56.25%; /* 16:9 비율 (9/16 * 100%) - 이미지를 더 높게 보이기 위해 수정 */
     height: 0; /* padding-bottom 트릭을 위해 높이를 0으로 설정 */
-    padding-bottom: 41.6666%; /* 1200x500 비율 (500/1200 * 100%) */
     position: relative; /* 내부 이미지의 absolute positioning을 위한 기준 */
     display: block;
     margin: 0 auto 20px auto; /* Reduced margin */
@@ -929,7 +930,10 @@ strong {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 이미지가 잘리지 않고 컨테이너 안에 들어가도록 */
+    object-fit: cover; /* 이미지가 컨테이너를 가득 채우고 잘림 (비율 유지) */
+    /* object-fit: contain; 은 이미지가 잘리지 않고 전체가 보이지만 여백이 생길 수 있음 */
+    /* object-fit: fill; 은 이미지가 컨테이너에 맞춰 늘어나거나 줄어들지만 왜곡될 수 있음 */
+    /* 여기서는 'cover'를 사용하여 세로를 채우고 좌우 여백을 최소화 */
 }
 
 
@@ -1080,9 +1084,10 @@ strong {
 .features-slider {
     position: relative;
     width: 100%;
-    max-width: 100%; /* 부모 너비에 맞춤 */
+    /* 이미지 높이를 늘리고 싶다면 padding-bottom 값을 늘리세요. */
+    /* 현재 1200x500 (41.6666%) 기준. 더 높게 보려면 예를 들어 56.25% (16:9)로 변경 */
+    padding-bottom: 56.25%; /* 16:9 비율 (9/16 * 100%) - 이미지를 더 높게 보이기 위해 수정 */
     height: 0; /* padding-bottom 트릭을 위해 높이를 0으로 설정 */
-    padding-bottom: 41.6666%; /* 1200x500 비율 (500/1200 * 100%) */
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -1097,7 +1102,7 @@ strong {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 이미지가 잘리지 않고 컨테이너 안에 들어가도록 */
+    object-fit: cover; /* 이미지가 컨테이너를 가득 채우고 잘림 (비율 유지) */
     opacity: 0;
     transition: opacity 1s ease-in-out;
     background-color: #ffffff;
@@ -1164,7 +1169,7 @@ strong {
     width: 84px; /* 아이콘 박스 크기 */
     height: 84px; /* 아이콘 박스 크기 */
     border-radius: 15px; /* 약간 둥근 사각형 */
-    box-shadow:0 0 28px 8px #a084ff99, 0 4px 32px #9575cd88;
+    box-shadow:0 0 28px 8px #b388ff99, 0 4px 32px #9575cd88;
     background:linear-gradient(135deg,#b39ddb,#7c4dff,#ede7f6,#9575cd 90%);
     background-size:300% 300%;
     animation:lavenderPulse 2.2s ease-in-out infinite, bouncePop 1.5s infinite alternate;
