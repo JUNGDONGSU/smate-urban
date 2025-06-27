@@ -280,11 +280,11 @@ header.scrolled::before {
 
 .intro-image-section .logo-image {
   position: absolute; /* 로고 이미지는 absolute로 유지하여 정확한 위치 지정 */
-  top: calc(50% + 50px); /* 타이틀 아래로 이동 (50% + 타이틀 높이 절반) */
+  top: calc(55% + 45px); /* 타이틀 아래로 이동 (50% + 타이틀 높이 절반) */
   left: 50%;
   transform: translateX(-50%); /* 가로 중앙 정렬 */
   width: auto;
-  max-width: 30%; /* PC 기본값 */
+  max-width: 40%; /* PC 기본값 */
   height: auto;
   z-index: 2; /* 텍스트 위에 오도록 */
   animation: fadeInEntrance 1.5s ease-out forwards, neonPulse 3s infinite alternate ease-in-out;
