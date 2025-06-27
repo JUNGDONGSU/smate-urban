@@ -284,7 +284,7 @@ header.scrolled::before {
   left: 50%;
   transform: translateX(-50%); /* 가로 중앙 정렬 */
   width: auto;
-  max-width: 40%; /* PC 기본값 */
+  max-width: 45%; /* PC 기본값 */
   height: auto;
   z-index: 2; /* 텍스트 위에 오도록 */
   animation: fadeInEntrance 1.5s ease-out forwards, neonPulse 3s infinite alternate ease-in-out;
