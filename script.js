@@ -34,8 +34,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
   const promoBanner = document.getElementById('promoBanner'); // Get the promo banner element
   const leftSideBar = document.getElementById('leftSideBar'); // Get the left sidebar element
+  const mobileCenterBanner = document.getElementById('mobileCenterBanner'); // Get the new element
 
-  if (header && promoBanner && leftSideBar) { // Ensure all elements exist
+  if (header && promoBanner && leftSideBar && mobileCenterBanner) { // Ensure all elements exist
       window.addEventListener('scroll', () => {
           // 스크롤 위치가 10px 이상이면 'scrolled' 클래스 추가, 아니면 제거
           if (window.scrollY > 10) {
@@ -43,11 +44,13 @@ window.addEventListener('DOMContentLoaded', () => {
               // 스크롤 시 promoBanner와 leftSideBar를 숨김
               promoBanner.classList.add('hidden-on-scroll');
               leftSideBar.classList.add('hidden-on-scroll');
+              mobileCenterBanner.classList.add('hidden-on-scroll'); // Add this line
           } else {
               header.classList.remove('scrolled');
               // 스크롤이 없으면 promoBanner와 leftSideBar를 다시 표시
               promoBanner.classList.remove('hidden-on-scroll');
               leftSideBar.classList.remove('hidden-on-scroll');
+              mobileCenterBanner.classList.remove('hidden-on-scroll'); // Add this line
           }
       });
   } else {
@@ -566,6 +569,37 @@ window.addEventListener('DOMContentLoaded', () => {
   // 4. P R E M I U M 섹션 슬라이더 설정
   setupImageSlider('features-slider', 'slider-image');
   // --- 이미지 슬라이더 기능 추가 끝 ---
+
+
+  // --- Promotional Banner Image Update Logic ---
+  const promoBannerImage = document.querySelector('#promoBanner img');
+  const pcBannerSrc = 'https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/image/slide_point_04.webp';
+  const mobileBannerSrc = 'https://raw.githubusercontent.com/JUNGDONGSU/smate-urban/refs/heads/main/image/Mobile_slide_point_01.webp';
+
+  function updatePromoBannerImage() {
+    if (promoBannerImage) {
+      if (window.innerWidth <= 768) { // Mobile breakpoint
+        if (promoBannerImage.src !== mobileBannerSrc) {
+          promoBannerImage.src = mobileBannerSrc;
+          console.log("Promo banner image updated to mobile version.");
+        }
+      } else { // PC version
+        if (promoBannerImage.src !== pcBannerSrc) {
+          promoBannerImage.src = pcBannerSrc;
+          console.log("Promo banner image updated to PC version.");
+        }
+      }
+    } else {
+      console.warn("Promo banner image element not found.");
+    }
+  }
+
+  // Initial call on load
+  updatePromoBannerImage();
+
+  // Update on window resize
+  window.addEventListener('resize', updatePromoBannerImage);
+  // --- End of Promotional Banner Image Update Logic ---
 
 });
 

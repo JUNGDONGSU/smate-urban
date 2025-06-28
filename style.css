@@ -478,8 +478,8 @@ header.scrolled::before {
     }
     /* 모바일 버전 로고 이미지 크기 (768px 이하 화면) */
     .intro-image-section .logo-image {
-        max-width: 80%; /* 모바일에서 로고의 최대 너비 (더 크게 보이도록 조정) */
-        top: calc(50% + 80px); /* Adjusted logo position on mobile (further down as title is larger) */
+        max-width: 90%; /* 모바일에서 로고의 최대 너비 (더 크게 보이도록 조정) */
+        top: calc(40% + 80px); /* Adjusted logo position on mobile (further down as title is larger) */
     }
 
     /* Hide PC version title on mobile and show mobile version */
@@ -1244,6 +1244,24 @@ strong {
   display: block;
 }
 
+/* New Mobile Center Banner */
+#mobileCenterBanner {
+    display: none; /* Hidden by default for PC */
+    position: fixed; /* Fixed position relative to viewport */
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centering trick */
+    z-index: 9995; /* Above other content, below reserveIconBtn (9999) */
+    width: 80%; /* 초기 너비: 화면 너비의 80% */
+    max-width: 400px; /* 최대 너비 설정 (너무 커지는 것 방지) */
+    height: auto; /* 이미지 비율 유지 */
+    opacity: 1; /* 초기 투명도 */
+    transition: opacity 0.3s ease-in-out; /* 스크롤 시 부드러운 페이드 효과 */
+    border-radius: 12px; /* 모서리 둥글게 */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* 그림자 추가 */
+}
+
+
 @media (max-width: 768px) {
     #complex-guide {
         padding: 20px 10px; /* Reduced padding on mobile */
@@ -1327,7 +1345,13 @@ strong {
 
     /* Left side bar on mobile */
     #leftSideBar {
-        height: 250px; /* Let height adjust based on new width */
-        width: 40px; /* Adjusted mobile width to be very small */
+        display: none; /* 모바일에서 왼쪽 배너 숨기기 */
+    }
+
+    /* Show Mobile Center Banner only on mobile */
+    #mobileCenterBanner {
+        display: block; /* 모바일에서만 보이기 */
+        width: 80%; /* 모바일에서 화면 너비의 80% */
+        max-width: 300px; /* 모바일에서 최대 너비 (더 크게 보이려면 이 값 조절) */
     }
 }
