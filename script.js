@@ -1,5 +1,3 @@
-// JavaScript for the website
-
 // Custom message box function (replaces alert)
 function displayMessage(message) {
   const messageBox = document.createElement('div');
@@ -34,15 +32,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // --- Header Scroll Opacity Logic ---
   const header = document.querySelector('header');
-  if (header) {
+  const promoBanner = document.getElementById('promoBanner'); // Get the promo banner element
+  const leftSideBar = document.getElementById('leftSideBar'); // Get the left sidebar element
+
+  if (header && promoBanner && leftSideBar) { // Ensure all elements exist
       window.addEventListener('scroll', () => {
           // 스크롤 위치가 10px 이상이면 'scrolled' 클래스 추가, 아니면 제거
           if (window.scrollY > 10) {
               header.classList.add('scrolled');
+              // 스크롤 시 promoBanner와 leftSideBar를 숨김
+              promoBanner.classList.add('hidden-on-scroll');
+              leftSideBar.classList.add('hidden-on-scroll');
           } else {
               header.classList.remove('scrolled');
+              // 스크롤이 없으면 promoBanner와 leftSideBar를 다시 표시
+              promoBanner.classList.remove('hidden-on-scroll');
+              leftSideBar.classList.remove('hidden-on-scroll');
           }
       });
+  } else {
+    console.log("Header, promoBanner, or leftSideBar element not found. Skipping scroll opacity logic."); // Debugging
   }
   // --- End of Header Scroll Opacity Logic ---
 
@@ -130,7 +139,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submitBtn');
 
   // Apps Script URL
-  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx1OemkhMdjo7sXjOTt4xTRt8F6xuO4WgS-TfmsvBFbRu0_Bc7qCw7lvqQSIYeUEdfL/exec'; // Updated URL
+  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx1OemkhMdjo7sXjOTt4xTRt8F6xuO4WgS-TfmsvBFvRu0_Bc7qCw7lvqQSIYeUEdfL/exec'; // Updated URL
 
   console.log('Apps Script Web App URL:', APPS_SCRIPT_WEB_APP_URL); // Verify URL is loaded correctly
 
